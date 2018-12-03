@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { simpleAction } from './actions/simpleAction';
+import Route from './routes/Routes';
 
 
 class App extends Component {
@@ -18,6 +19,7 @@ render() {
           JSON.stringify(this.props)
         }
       </pre>
+      <Route />
       <button className="button" onClick={this.simpleAction}>Test redux action</button>
     </div>
 

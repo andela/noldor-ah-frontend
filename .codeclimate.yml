@@ -1,8 +1,10 @@
+version: '2'
 plugins: 
   eslint:
     enabled: true
-  config:
-    config: .eslintrc
-    extensions:
-      - .es6
-      - .js
+    channel: "eslint-5"
+    config:
+      config: .eslintrc.json
+      extensions:
+        - .es6
+        - .js

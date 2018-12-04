@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { simpleAction } from './actions/simpleAction';
+import './static/stylesheets/app.scss';
 
 
 class App extends Component {

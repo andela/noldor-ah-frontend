@@ -18,6 +18,5 @@ describe('App component', () => {
     </Provider>);
 
     wrapper.find('button').simulate('click');
-    // expect(wrapper.find('h1')).toBe('Welcome to Authors Haven');
   });
 });

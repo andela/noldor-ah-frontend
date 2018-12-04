@@ -5,7 +5,6 @@ import configureStore from './store/configureStore';
 import App from './App';
 
 const store = configureStore();
-// const App = () => <div><center><h1>Welcome to Authors Haven</h1></center></div>;
 
 ReactDOM.render((
   <Provider store={store}>

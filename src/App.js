@@ -28,6 +28,7 @@ render() {
   );
 }
 }
+
 App.propTypes = {
   simpleAction: PropTypes.func
 };

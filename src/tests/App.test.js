@@ -12,6 +12,7 @@ describe('App component', () => {
   it('should dispatch action', () => {
     const initialState = {};
     const store = mockStore(initialState);
+
     const wrapper = mount(<Provider store={store}>
       <App/>
     </Provider>);

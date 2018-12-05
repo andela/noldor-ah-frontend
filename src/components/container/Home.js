@@ -1,55 +1,60 @@
+/* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import FeaturedArticle from '../presentation/Home/FeaturedArticle';
-import AllArticle from '../presentation/Home/AllArticles';
+import AllArticles from '../presentation/Home/AllArticles';
 import Banner from '../presentation/Home/Banner';
 import RelatedArticle from '../presentation/Home/RelatedArticles';
 import CategoryList from '../presentation/Home/CategoryList';
 import Pagination from '../presentation/Home/Pagination';
+import './style/home.scss';
 import { loadFeatureArticle } from '../../actions/featureArticleAction';
 import { loadRelatedArticles } from '../../actions/relatedArticlesAction';
-import { loadAllArticle } from '../../actions/allArticleAction';
-import './style/home.scss';
+import { loadAllArticles } from '../../actions/allArticleAction';
 
 
 class Home extends Component {
-  constructor(props, context) {
-    super(props, context);
+  constructor(props, context, page = 1) {
+    super(props, context, page);
     this.state = {
       featuredArticle: {},
-      allArticles: {}
-
+      allArticles: {},
+      page: 1
     };
+    this.page = page;
   }
 
-  componentDidMount = () => {
+  componentDidMount = async () => {
     this.props.featureArticle();
     this.props.relatedArticle();
     this.props.allArticle();
-    console.log('runing..');
     this.setState({ featuredArticle: this.props.featureArticle() });
     this.setState({ allArticles: this.props.allArticle() });
   }
 
+  handleClick = (e) => {
+    const pageNo = e.target.className === 'pagination-next' ? (this.page += 1) : (this.page -= 1);
+    this.props.allArticle(pageNo);
+    this.setState({ allArticles: this.props.allArticle(pageNo) });
+    this.setState({ ...this.state, page: pageNo });
+  }
+
   render() {
-    // console.log(this.props.featuredArticle);
+    const { featuredArticle, allArticles } = this.props;
     return (
       <div>
         <section className="feat-section">
           <CategoryList />
-
-          <FeaturedArticle article = {this.props.featuredArticle}/>
-
+          <FeaturedArticle article={featuredArticle}/>
         </section>
-
         <section className="section">
           <div className="container is-mt3 ">
             <div className="columns is-multiline ">
-              <AllArticle articles = {this.props.allArticles}/>
+              {allArticles.map((article, index) => <AllArticles key={index} article={article} />)}
             </div>
-            <nav className="pagination is-rounded" role="navigation" aria-label="pagination">
-              <Pagination onClick={this.onClickNext} />
+            <nav className="pagination is-rounded" role="navigation" aria-label="pagination" >
+              <Pagination onClick={this.handleClick} isVisible={this.state.page} />
             </nav>
           </div>
         </section>
@@ -62,15 +67,13 @@ class Home extends Component {
           </div>
         </section>
       </div>
-
-
     );
   }
 }
 
 Home.propType = {
-  featuredArticle: PropTypes.object.isRequired,
-  allArticles: PropTypes.object.isRequired
+  featuredArticle: PropTypes.func.isRequired,
+  allArticles: PropTypes.func.isRequired
 };
 
 /**
@@ -79,22 +82,18 @@ Home.propType = {
  * @param { object } ownProp
  * @returns { object } object
 */
-
-// eslint-disable-next-line require-jsdoc
-function mapStateToProps(state, ownProp) {
-  // articleId = ownProp.params.id
-// state can be formatted here
-  console.log(state);
+function mapStateToProps(state) {
   return {
     featuredArticle: state.featureArticleReducer,
-    allArticles: state.allArticleReducer,
-    relatedArticle: state.relatedArticleReducer
+    relatedArticle: state.featureRelatedReducer,
+    allArticles: state.allArticleReducer
   };
 }
 
 const mapDispatchToProps = {
   featureArticle: () => loadFeatureArticle(),
   relatedArticle: () => loadRelatedArticles(),
-  allArticle: () => loadAllArticle()
+  allArticle: page => loadAllArticles(page)
 };
+
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

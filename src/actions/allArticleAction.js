@@ -22,19 +22,15 @@ export function loadAllArticlesFailure(error) {
   };
 }
 
-export const loadAllArticle = () => (dispatch) => {
-  const request = axios({
-    method: 'GET',
-    url: 'https://noldor-ah-backend-staging.herokuapp.com/api/v1/articles',
-    headers: []
-  });
-
-  return request.then(
-    (response) => {
-      console.log(response.data.articles);
-      // const articleLength = response.data.articles.length;
-      dispatch(loadAllArticlesSucess(response.data.articles));
-    },
-    err => dispatch(loadAllArticlesFailure(err))
-  );
+export const loadAllArticles = (page = 1) => async (dispatch) => {
+  try {
+    const request = await axios({
+      method: 'GET',
+      url: `https://noldor-ah-backend-staging.herokuapp.com/api/v1/articles/limit/${9}/page/${page}`
+    });
+    localStorage.setItem('message', request.data.message.split('of')[1].trim());
+    return dispatch(loadAllArticlesSucess(request.data.result));
+  } catch (err) {
+    return dispatch(loadAllArticlesFailure(err.response));
+  }
 };

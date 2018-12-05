@@ -22,7 +22,6 @@ export const loadRelatedArticles = () => (dispatch) => {
       const related = articles.filter(x => x.category === 'science');
       const shuffleArticle = related.sort(() => { return 0.6 - Math.random(); });
       const sortedArticles = shuffleArticle.slice(0, 3);
-      console.log(`sorted:::: ${sortedArticles}`);
       dispatch(loadRelatedSuccess(sortedArticles));
     },
     err => dispatch(loadRelatedFailure(err))

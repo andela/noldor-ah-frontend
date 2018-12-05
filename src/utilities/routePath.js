@@ -1,5 +1,5 @@
 const ROUTE_PATH = {
-  homepage: '/',
+  homepage: '/home',
   user: {
     signup: '/signup',
     login: '/login',

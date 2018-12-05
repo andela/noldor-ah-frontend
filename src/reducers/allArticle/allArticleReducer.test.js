@@ -1,6 +1,6 @@
 import thunk from 'redux-thunk';
 import configureStore from 'redux-mock-store';
-import reducer from '../allArticleReducer';
+import reducer from './allArticleReducer';
 
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);

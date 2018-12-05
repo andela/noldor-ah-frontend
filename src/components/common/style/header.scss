@@ -6,6 +6,32 @@
     line-height: 50px;
     padding-left: 12px;
   }
+  .logo-size{
+    height: 50px
+  }
+  .logo-position{
+    position:absolute;
+    left:5px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+  }
+  @media(max-width:768px){
+    .logo-position {
+      left: 50%;
+      top: 35px;
+  }
+  }
+  @media(max-width:465px){
+    .logo-position{
+      left: 25%;
+    }
+    .logo-size{
+      height: 40px
+    }
+    
+  }
+
   
   .topnav-centered {
     float: none;
@@ -52,7 +78,7 @@
     }
   }
   
-  @media (max-width: 768px) {
+  @media (max-width: 612px) {
     .search-bar {
       display: none;
     }

@@ -1,34 +1,38 @@
+/* eslint-disable max-len */
 import React, { Component } from 'react';
+
+// third-party libraries
 import { connect } from 'react-redux';
-import propTypes from 'prop-types';
-import FeaturedArticle from '../presentation/Home/FeaturedArticle';
-import AllArticles from '../presentation/Home/AllArticles';
-import Banner from '../presentation/Home/Banner';
-import RelatedArticle from '../presentation/Home/RelatedArticles';
-import CategoryList from '../presentation/Home/CategoryList';
-import Pagination from '../presentation/Home/Pagination';
+import PropTypes from 'prop-types';
+
+
+// components
+import {
+  Banner, RelatedArticle, CategoryList, FeaturedArticle, AllArticles
+} from '../../presentational';
+import Pagination from '../../presentational/Home/Pagination';
+import { loadFeatureArticle } from '../../../actions/featureArticleAction';
+import { loadRelatedArticles } from '../../../actions/relatedArticlesAction';
+import { loadAllArticles } from '../../../actions/allArticleAction';
+import Loading from '../../common/Loader';
+
+// styles
 import './style/home.scss';
-import { loadFeatureArticle } from '../../actions/featureArticleAction';
-import { loadRelatedArticles } from '../../actions/relatedArticlesAction';
-import { loadAllArticles } from '../../actions/allArticleAction';
 
-
-class Home extends Component {
+export class Home extends Component {
   constructor(props, context, page = 1) {
     super(props, context, page);
     this.state = {
-      featuredArticle: {},
       allArticles: {},
       page: 1
     };
     this.page = page;
   }
 
-  componentDidMount = async () => {
+  componentDidMount = () => {
     this.props.featureArticle();
-    this.props.relatedArticle();
+    this.props.relateArticle();
     this.props.allArticle();
-    this.setState({ featuredArticle: this.props.featureArticle() });
     this.setState({ allArticles: this.props.allArticle() });
   }
 
@@ -40,15 +44,16 @@ class Home extends Component {
   }
 
   render() {
-    const {
-      featuredArticle,
-      allArticles
-    } = this.props;
+    console.log(this.props);
+    const { featuredArticle, relatedArticle, allArticles } = this.props;
+    if (featuredArticle.isLoading !== false && relatedArticle.isLoading !== false) {
+      return <Loading />;
+    }
     return (
       <div>
         <section className="feat-section">
           <CategoryList />
-          <FeaturedArticle article={featuredArticle}/>
+          <FeaturedArticle article = {featuredArticle.article} read={this.viewArticle}/>
         </section>
         <section className="section">
           <div className="container is-mt3 ">
@@ -61,10 +66,11 @@ class Home extends Component {
           </div>
         </section>
         <Banner />
-        <section className="section ">
+        <section className="section related-article-head">
+          <h1 className="related-article-title has-text-weight-bold">Top Articles</h1>
           <div className="container ">
             <div className="columns footer-article">
-              <RelatedArticle />
+              {relatedArticle.articles.map((x, index) => <RelatedArticle key={index} article={x} />)}
             </div>
           </div>
         </section>
@@ -74,31 +80,25 @@ class Home extends Component {
 }
 
 Home.propTypes = {
-  featureArticle: propTypes.func.isRequired,
-  featuredArticle: propTypes.func.isRequired,
-  relatedArticle: propTypes.func.isRequired,
-  allArticle: propTypes.func.isRequired,
-  allArticles: propTypes.array.isRequired
+  featuredArticle: PropTypes.object.isRequired,
+  featureArticle: PropTypes.func.isRequired,
+  relateArticle: PropTypes.func.isRequired,
+  relatedArticle: PropTypes.object.isRequired,
+  allArticle: PropTypes.func.isRequired,
+  allArticles: PropTypes.array.isRequired
 };
 
-/**
- * @description - mapStateToProps
- * @param { object } state
- * @param { object } ownProp
- * @returns { object } object
-*/
-function mapStateToProps(state) {
+export const mapStateToProps = (state) => {
   return {
     featuredArticle: state.featureArticleReducer,
-    relatedArticle: state.featureRelatedReducer,
+    relatedArticle: state.relatedArticleReducer,
     allArticles: state.allArticleReducer
   };
-}
-
-const mapDispatchToProps = {
-  featureArticle: () => loadFeatureArticle(),
-  relatedArticle: () => loadRelatedArticles(),
-  allArticle: page => loadAllArticles(page)
 };
 
+export const mapDispatchToProps = {
+  featureArticle: () => loadFeatureArticle(),
+  relateArticle: () => loadRelatedArticles(),
+  allArticle: page => loadAllArticles(page)
+};
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

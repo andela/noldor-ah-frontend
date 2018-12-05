@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import './style.scss';
 
 const Pagination = (props) => {
   const { onClick, isVisible } = props;

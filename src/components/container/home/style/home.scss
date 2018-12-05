@@ -1,6 +1,8 @@
 
 
-  
+  .full-height{
+    min-height: 80vh;
+  }
   /** categories **/
   
   .categories {
@@ -30,15 +32,19 @@
   }
   
   /** feature article **/
+  .feature-overlay{
+    background-color: #00000082;
+    width: 100%;
+    height:100%;
+  }
 
   .feature-title-box{
-      background-color: #00000052;
       display: inline-block;
-      position: absolute;
-      width:40%;
-    top: 30%;
-    left: 25%;
-    transform: translate(-50%, -50%);
+      position: relative;
+      width:80%;
+      height:100%;
+    
+    left: 10%;
     text-align: center;
   }
   
@@ -58,17 +64,49 @@
   .featured-article-img {
     padding: 30px, 30px, 30px, 30px;
   }
-  
+  .author{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+  }
   .is-authorname {
     display: flex;
     align-items: center;
+    padding-left: 15px;
   }
   
   /** all article **/
+  @media(min-width: 768px){
+    .all-article{
+      max-height: 481px;
+      min-height: 481px;
+    }
+  }
+  @media(max-width: 768px){
+    .all-article{
+      max-height: 100%!important;
+      min-height: auto;
+    }
+  }
   
   .is-curvedtop {
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
+  }
+
+  // banner
+
+  @media(max-width:768px){
+    .banner{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    .button.is-large {
+      font-size: 1rem;
+    }
+    .banner-logo{
+      width:70%;
+    }
   }
   
   /**related articles**/
@@ -78,7 +116,15 @@
       padding-right: 120px !important;
     }
   }
-
+  .related-article-title{
+    display: inline-block;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding-top:20px;
+    border-top: solid 1px #E66869;
+  }
   
   
   /** general **/
@@ -96,6 +142,9 @@
   .grey-bg {
     background-color: #8CA09F !important;
   }
+   .grey-color{
+     color:#979797;
+   }
   
   .is-pr1 {
     padding-right: 1em;
@@ -139,6 +188,12 @@
   
   .is-pt3 {
     padding-top: 3em;
+  }
+  .is-pt4{
+    padding-top: 4em;
+  }
+  .is-pt5 {
+    padding: 5%;
   }
   
   .is-pb3 {
@@ -199,7 +254,7 @@
   }
   
   .is-pinkborder {
-    border: 1px solid #CB7979;
+    border: 2px solid #CB7979;
   }
   
   .box {

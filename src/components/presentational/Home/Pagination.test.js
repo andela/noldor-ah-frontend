@@ -3,8 +3,8 @@ import { mount, shallow } from 'enzyme';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
-import Pagination from '../Pagination';
-import AllArticles from '../AllArticles';
+import Pagination from './Pagination';
+import AllArticles from './AllArticles';
 
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);

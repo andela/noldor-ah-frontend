@@ -1,0 +1,16 @@
+{
+  "name": "noldor-ah-frontend",
+  "description": "",
+  "scripts": {
+  },
+  "env": {
+  },
+  "formation": {
+  },
+  "addons": [
+
+  ],
+  "buildpacks": [
+
+  ]
+}

@@ -1,0 +1,20 @@
+$ah-grey: #9D9D9D;
+$ah-primary:  #E66869;
+
+.form-control {
+  border-style: none;
+  width: 100%;
+  padding: .5em 0;
+  border-bottom: 2px solid $ah-grey;
+  font-size: 1rem;
+}
+
+.form-control:hover, .form-control:focus {
+  border-bottom: 2px ridge $ah-primary;
+  outline: 0;
+}
+
+.form-control ::placeholder {
+  font-weight: thin;
+  color: $ah-grey;
+}

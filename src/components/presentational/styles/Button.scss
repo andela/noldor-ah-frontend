@@ -1,0 +1,15 @@
+@import '../../../utilities/_variables.scss';
+
+.button {
+  background-color: $ah-primary;
+  color: white;
+  border-style: none;
+  border-radius: 3px;
+  padding: .3em 4em;
+}
+
+.button:hover {
+  opacity: .8;
+  color: white;
+  cursor: pointer;
+}

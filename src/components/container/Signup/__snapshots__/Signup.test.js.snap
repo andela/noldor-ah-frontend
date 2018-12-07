@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Signup /> matches the snapshoot 1`] = `<Connect(ConnectedSignup) />`;
+
+exports[`<Signup /> matches the snapshoot of signup Page 1`] = `<ConnectedSignup />`;

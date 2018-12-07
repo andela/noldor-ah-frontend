@@ -8,8 +8,7 @@
     "build": "rm -rf server/dist && babel server --out-dir server/dist",
     "dev": "webpack-dev-server --open",
     "test": "jest --config ./jest.config.json --coverage --colors",
-    "test:watch": "jest --config ./jest.config.json --watch",
-    "test:coverage": "jest --config ./jest.config.json --coverage --colors"
+    "test:watch": "jest --config ./jest.config.json --watch"
   },
   "repository": {
     "type": "git",
@@ -29,7 +28,7 @@
     "axios": "^0.18.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.4.2",
-    "connected-react-router": "^5.0.1",
+    "dotenv": "^6.1.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "enzyme-to-json": "^3.3.4",
@@ -38,6 +37,7 @@
     "jest": "^23.4.2",
     "jsdom": "^13.0.0",
     "prop-types": "^15.6.2",
+    "query-string": "^6.2.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-redux": "^5.1.1",
@@ -71,6 +71,7 @@
     "html-webpack-plugin": "^3.2.0",
     "node-sass": "^4.10.0",
     "react-router": "^2.0.1",
+    "redux-immutable-state-invariant": "^2.1.0",
     "redux-mock-store": "^1.5.3",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",

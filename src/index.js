@@ -4,9 +4,8 @@ import { Provider } from 'react-redux';
 import store from './store';
 import Routes from './routes/Routes';
 
-
 ReactDOM.render((
   <Provider store={store}>
     <Routes />
   </Provider>
-), document.querySelector('#app'));
+), document.getElementById('app'));

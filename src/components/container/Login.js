@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import axiosRequest from '../../utilities/axiosRequest';
 import { Link } from 'react-router-dom';
 import propTypes from 'prop-types';
+import axiosRequest from '../../utilities/axiosRequest';
 import saveLoginDetails from '../../actions/loginAction';
 import {
   Input, Notification, Button,

@@ -10,6 +10,7 @@ import Banner from './home/Banner';
 
 export {
   Input,
+  ModalNotification,
   Notification,
   ModalNotification,
   Button,

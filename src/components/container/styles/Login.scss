@@ -46,7 +46,11 @@
    }
 }
 
+<<<<<<< HEAD
 @media only screen and (max-width: $ipad) {
+=======
+@media only screen and (max-width: $desktop-large) {
+>>>>>>> add login functionality
   html {
     background-color: #fff;
   }
@@ -62,10 +66,13 @@
     .login-left {
       display: none;
     }
+<<<<<<< HEAD
 
     .form-button {
       width: 100%;
     }
+=======
+>>>>>>> add login functionality
   }
 }
 

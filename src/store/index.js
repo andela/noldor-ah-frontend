@@ -18,4 +18,7 @@ function configureStore() {
 }
 
 const store = configureStore();
+window.store = store;
+
+store.subscribe(() => localStorage.setItem('store', JSON.stringify(store.getState())));
 export default store;

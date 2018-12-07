@@ -1,8 +1,11 @@
 import store from '../store';
 
 const isLoggedIn = () => {
-  if (store.getState().login.token) return true;
-  return false;
+  try {
+    if (store.getState().login.loginDetails.token) return true;
+  } catch (error) {
+    return false;
+  }
 };
 
 export default isLoggedIn;

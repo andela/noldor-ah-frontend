@@ -3,14 +3,14 @@ import { connect } from 'react-redux';
 import Axios from 'axios';
 import { Link } from 'react-router-dom';
 import propTypes from 'prop-types';
-import saveToken from '../../actions/tokenAction';
+import saveLoginDetails from '../../actions/loginAction';
 import {
   Input, Notification, Button,
 } from '../presentational/index';
 import './styles/Login.scss';
 
 const mapDispatchToProps = dispatch => ({
-  storeToken: token => dispatch(saveToken(token))
+  storeLoginDetails: details => dispatch(saveLoginDetails(details))
 });
 
 class ConnectedLogin extends Component {
@@ -33,7 +33,7 @@ class ConnectedLogin extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
-    const { history, storeToken } = this.props;
+    const { history, storeLoginDetails } = this.props;
     const {
       email, password,
     } = this.state;
@@ -41,8 +41,8 @@ class ConnectedLogin extends Component {
 
     return Axios.post('https://noldor-ah-backend-staging.herokuapp.com/api/v1/users/login', user)
       .then((response) => {
-        const { token, message: resMessage } = response.data;
-        storeToken(token);
+        const { token, id: userId, message: resMessage } = response.data;
+        storeLoginDetails({ token, userId });
         this.setState({ message: resMessage, display: 'block', status: 'success' });
         setTimeout(() => history.push('profile', { prev: 'login' }), 500);
       })
@@ -123,7 +123,7 @@ class ConnectedLogin extends Component {
 
 ConnectedLogin.propTypes = {
   history: propTypes.object.isRequired,
-  storeToken: propTypes.func.isRequired,
+  storeLoginDetails: propTypes.func.isRequired,
 };
 
 const Login = connect(null, mapDispatchToProps)(ConnectedLogin);

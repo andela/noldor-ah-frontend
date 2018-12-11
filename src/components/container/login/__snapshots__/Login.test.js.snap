@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Login /> shallow rendering tests matches the snapshot 1`] = `
+<div
+  className="container columns is-desktop level login-container"
+>
+  <div
+    className="container column is-half login-left"
+  />
+  <div
+    className="container column level level-item login-right"
+  >
+    <div
+      className="login-intro-container"
+    >
+      <h2
+        className="level-item login-intro"
+      >
+        WELCOME BACK
+      </h2>
+      <p
+        className="level-item login-intro"
+      >
+        Login to your account below
+      </p>
+    </div>
+    <form
+      className="login-form"
+      onSubmit={[Function]}
+    >
+      <Notification
+        display="none"
+        message=""
+        status=""
+      />
+      <Input
+        className="form-control"
+        id="email"
+        name="email"
+        onChange={[Function]}
+        pattern={null}
+        placeholder="Enter your email address here"
+        required={true}
+        title="E-mail"
+        type="email"
+        value=""
+      />
+      <Input
+        className="form-control"
+        id="password"
+        name="password"
+        onChange={[Function]}
+        pattern={null}
+        placeholder="Enter your password here"
+        required={true}
+        title="Password"
+        type="password"
+        value=""
+      />
+      <Button
+        className="form-button"
+        text="LOGIN"
+        type="submit"
+      />
+    </form>
+    <p
+      className="cta"
+    >
+      No account yet? 
+      <Link
+        replace={false}
+        to="signup"
+      >
+        Sign up here
+      </Link>
+    </p>
+    <p
+      className="cta"
+    >
+      Forgot password? 
+      <Link
+        replace={false}
+        to="forgot-password"
+      >
+        click here
+      </Link>
+    </p>
+  </div>
+</div>
+`;

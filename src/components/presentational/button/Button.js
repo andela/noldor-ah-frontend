@@ -24,7 +24,7 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
-  className: 'button',
+  className: 'form-button',
   type: 'button',
   text: 'button'
 };

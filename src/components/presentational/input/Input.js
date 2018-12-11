@@ -7,6 +7,7 @@ const Input = (props) => {
     name, title, type,
     value, onChange, placeholder,
     className, required, pattern,
+    id,
   } = props;
 
   return (
@@ -15,6 +16,7 @@ const Input = (props) => {
         {title}
       </label>
       <input
+        id={id}
         className={className}
         name={name}
         type={type}
@@ -36,6 +38,7 @@ Input.propTypes = {
   onChange: propTypes.func,
   placeholder: propTypes.string,
   className: propTypes.string,
+  id: propTypes.string,
   required: propTypes.bool,
   pattern: propTypes.string,
 };
@@ -45,9 +48,9 @@ Input.defaultProps = {
   title: '',
   type: '',
   value: '',
-  onChange: () => '',
   placeholder: '',
   className: 'form-control',
+  id: '',
   required: false,
   pattern: null,
 };

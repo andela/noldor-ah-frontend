@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Axios from 'axios';
 import { Link } from 'react-router-dom';
 import propTypes from 'prop-types';
-import saveLoginDetails from '../../actions/loginAction';
-import {
-  Input, Notification, Button,
-} from '../presentational/index';
+import { loginRequest } from '../../../actions/login/loginAction';
+import { Input, Notification, Button } from '../../presentational/index';
 import './styles/Login.scss';
 
-const mapDispatchToProps = dispatch => ({
-  storeLoginDetails: details => dispatch(saveLoginDetails(details))
+const mapStateToProps = state => ({
+  notification: state.notification,
 });
 
-class ConnectedLogin extends Component {
+const mapDispatchToProps = dispatch => ({
+  login: user => dispatch(loginRequest(user))
+});
+
+export class ConnectedLogin extends Component {
   constructor(props) {
     super(props);
 
@@ -30,36 +31,24 @@ class ConnectedLogin extends Component {
 
   handleInputChange = e => this.setState({ [e.target.name]: e.target.value });
 
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { history, storeLoginDetails } = this.props;
     const {
-      email, password,
-    } = this.state;
-    const user = { email, password };
+      history, login,
+    } = this.props;
 
-    return Axios.post('https://noldor-ah-backend-staging.herokuapp.com/api/v1/users/login', user)
-      .then((response) => {
-        const { token, id: userId, message: resMessage } = response.data;
-        storeLoginDetails({ token, userId });
-        this.setState({ message: resMessage, display: 'block', status: 'success' });
-        setTimeout(() => history.push('profile', { prev: 'login' }), 500);
-      })
-      .catch((err) => {
-        if (err.response.status === 401) {
-          return this.setState({
-            message: err.response.data.error.email,
-            status: 'error',
-            display: 'block',
-          });
-        }
-        return this.setState({
-          message: err.response.data.message,
-          status: 'error',
-          display: 'block',
-        });
+    try {
+      await login({ ...this.state });
+      this.setState({
+        display: 'block',
+        message: this.props.notification.message,
+        status: this.props.notification.type,
       });
+      return setTimeout(() => history.push('profile', { prev: 'login' }), 500);
+    } catch (error) {
+      /* do nothing */
+    }
   }
 
   render() {
@@ -83,6 +72,7 @@ class ConnectedLogin extends Component {
               display={display}
             />
             <Input
+              id="email"
               title="E-mail"
               name="email"
               type="email"
@@ -93,6 +83,7 @@ class ConnectedLogin extends Component {
             />
 
             <Input
+              id="password"
               title="Password"
               name="password"
               type="password"
@@ -122,10 +113,11 @@ class ConnectedLogin extends Component {
 }
 
 ConnectedLogin.propTypes = {
-  history: propTypes.object.isRequired,
-  storeLoginDetails: propTypes.func.isRequired,
+  history: propTypes.object,
+  dispatch: propTypes.func,
+  notification: propTypes.object,
 };
 
-const Login = connect(null, mapDispatchToProps)(ConnectedLogin);
+const Login = connect(mapStateToProps, mapDispatchToProps)(ConnectedLogin);
 
 export default Login;

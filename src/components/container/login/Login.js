@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import propTypes from 'prop-types';
 import { loginRequest } from '../../../actions/login/loginAction';
 import { Input, Notification, Button } from '../../presentational/index';
+import { LOGIN_SUCCESS } from '../../../types/login';
 import './styles/Login.scss';
 
 const mapStateToProps = state => ({
@@ -39,13 +40,15 @@ export class ConnectedLogin extends Component {
     } = this.props;
 
     try {
-      await login({ ...this.state });
+      const response = await login({ ...this.state });
       this.setState({
         display: 'block',
         message: this.props.notification.message,
         status: this.props.notification.type,
       });
-      return setTimeout(() => history.push('profile', { prev: 'login' }), 500);
+      if (response === LOGIN_SUCCESS) {
+        return setTimeout(() => history.push('profile', { prev: 'login' }), 500);
+      }
     } catch (error) {
       /* do nothing */
     }

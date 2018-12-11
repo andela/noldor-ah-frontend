@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Input /> shallow rendering tests matches the snapshot 1`] = `
+<div
+  className="form-group"
+>
+  <label
+    className="form-label"
+    htmlFor=""
+  />
+  <input
+    className="form-control"
+    id=""
+    name=""
+    pattern={null}
+    placeholder=""
+    required={false}
+    type=""
+    value=""
+  />
+</div>
+`;

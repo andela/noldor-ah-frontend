@@ -1,24 +1,53 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import {
+  Router, Route, Switch,
+} from 'react-router-dom';
+import { connect } from 'react-redux';
+import propTypes from 'prop-types';
+import createHistory from 'history/createBrowserHistory';
+import PublicRoute from '../utilities/publicRoute/publicRoute';
 import ROUTE_PATH from '../utilities/routePath';
-import Home from '../components/Home';
-import Login from '../components/Login';
-import NotFound from '../components/404';
-import Signup from '../components/Signup';
+import Home from '../components/container/Home';
+import Login from '../components/container/login/Login';
+import NotFound from '../components/container/404';
+import Signup from '../components/container/Signup';
+import { notifyClear } from '../actions/notification/notificationAction';
 
-class Routes extends Component {
+const history = createHistory();
+
+const mapStateToProps = state => ({
+  notification: state.notification,
+});
+
+class ConnectedRoutes extends Component {
+  constructor(props) {
+    super(props);
+    const { dispatch } = this.props;
+
+    history.listen(() => {
+      // clear notification on location change
+      dispatch(notifyClear());
+    });
+  }
+
   render() {
     return (
-      <BrowserRouter>
+      <Router history={history}>
         <Switch>
           <Route path={ROUTE_PATH.homepage} component={Home} exact />
-          <Route path={ROUTE_PATH.user.login} component={Login} />
+          <PublicRoute path={ROUTE_PATH.user.login} component={Login} />
           <Route path={ROUTE_PATH.user.signup} component={Signup} />
           <Route component={NotFound} />
         </Switch>
-      </BrowserRouter>
+      </Router>
     );
   }
 }
+
+ConnectedRoutes.propTypes = {
+  dispatch: propTypes.func.isRequired,
+};
+
+const Routes = connect(mapStateToProps)(ConnectedRoutes);
 
 export default Routes;

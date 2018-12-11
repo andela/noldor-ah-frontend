@@ -8,7 +8,6 @@ import createHistory from 'history/createBrowserHistory';
 import PublicRoute from '../utilities/publicRoute/publicRoute';
 import ROUTE_PATH from '../utilities/routePath';
 import Home from '../components/container/Home';
-<<<<<<< HEAD
 import Login from '../components/container/login/Login';
 import NotFound from '../components/container/404';
 import Signup from '../components/container/Signup/Signup';
@@ -21,21 +20,15 @@ const mapStateToProps = state => ({
   notification: state.notification,
 });
 
-class ConnectedRoutes extends Component {
+export class ConnectedRoutes extends Component {
   constructor(props) {
     super(props);
     const { dispatch } = this.props;
 
     history.listen(() => {
-      // clear notification on location change
       dispatch(notifyClear());
     });
   }
-=======
-import Login from '../components/Login';
-import NotFound from '../components/404';
-import Signup from '../components/Signup';
->>>>>>> feat(home): Rendered Landing Page
 
   render() {
     return (

@@ -17,7 +17,6 @@ export const loadFeatureArticle = () => (dispatch) => {
 
   return request.then(
     (response) => {
-      // console.log(response.data.articles.length);
       const articleLength = response.data.articles.length;
       const no = Math.floor((Math.random() * articleLength));
       dispatch(loadFeatureSuccess(response.data.articles[no]));

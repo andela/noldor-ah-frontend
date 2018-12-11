@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './static/stylesheets/app.scss';
 import { Header, Footer } from './components/common';
 import Route from './routes/Routes';
 

@@ -1,7 +1,6 @@
-/* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 import FeaturedArticle from '../presentation/Home/FeaturedArticle';
 import AllArticles from '../presentation/Home/AllArticles';
 import Banner from '../presentation/Home/Banner';
@@ -41,7 +40,10 @@ class Home extends Component {
   }
 
   render() {
-    const { featuredArticle, allArticles } = this.props;
+    const {
+      featuredArticle,
+      allArticles
+    } = this.props;
     return (
       <div>
         <section className="feat-section">
@@ -71,9 +73,12 @@ class Home extends Component {
   }
 }
 
-Home.propType = {
-  featuredArticle: PropTypes.func.isRequired,
-  allArticles: PropTypes.func.isRequired
+Home.propTypes = {
+  featureArticle: propTypes.func.isRequired,
+  featuredArticle: propTypes.func.isRequired,
+  relatedArticle: propTypes.func.isRequired,
+  allArticle: propTypes.func.isRequired,
+  allArticles: propTypes.array.isRequired
 };
 
 /**

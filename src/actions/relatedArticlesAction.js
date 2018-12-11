@@ -17,7 +17,6 @@ export const loadRelatedArticles = () => (dispatch) => {
 
   return request.then(
     (response) => {
-      // console.log(response.data.articles.length);
       const { articles } = response.data;
       const related = articles.filter(x => x.category === 'science');
       const shuffleArticle = related.sort(() => { return 0.6 - Math.random(); });

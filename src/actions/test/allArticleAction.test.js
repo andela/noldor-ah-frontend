@@ -5,7 +5,6 @@ import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import Pagination from '../../components/presentation/Home/Pagination';
 import { loadAllArticles } from '../allArticleAction';
-// import { loadAllArticles } from '../../../../actions/allArticleAction';
 
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);

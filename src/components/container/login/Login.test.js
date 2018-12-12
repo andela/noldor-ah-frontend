@@ -63,4 +63,17 @@ describe('<Login /> shallow rendering tests', () => {
     wrapper.find('form').simulate('submit', { preventDefault() {} });
     expect(mockLoginFn.mock.calls.length).toBe(1);
   });
+
+  it('handleSocialButton works as expected', () => {
+    const e = {
+      target: {
+        className: 'social-gl-btn'
+      }
+    };
+    wrapper.instance().handleSocialButton(e);
+    delete e.target.className;
+    wrapper.instance().handleSocialButton(e);
+
+    expect(wrapper.instance().handleSocialButton).toBeDefined();
+  });
 });

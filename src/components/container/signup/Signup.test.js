@@ -1,7 +1,8 @@
 import React from 'react';
-import { mount, shallow } from 'enzyme';
+import { MemoryRouter } from 'react-router-dom';
+import { mount } from 'enzyme';
 import configureStore from 'redux-mock-store';
-import { Provider } from 'react-redux';
+// import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import Signup, { ConnectedSignup } from './Signup';
 
@@ -11,28 +12,33 @@ const mockStore = configureStore(middlewares);
 
 
 describe('<Signup />', () => {
-  it('matches the snapshoot', () => {
-    const initialState = {};
-    const store = mockStore(initialState);
+  let wrapper;
+  const mockSignupFn = jest.fn();
 
-    const wrapper = shallow(<Provider store={store}>
-      <Signup/>
-    </Provider>);
-    expect(wrapper).toMatchSnapshot();
+  beforeEach(() => {
+    const props = {
+      notification: {
+        type: 'error',
+      }
+    };
+    const store = mockStore({});
+    const mounted = mount(
+      <MemoryRouter>
+        <Signup store={store} {...props} handleSubmit={mockSignupFn} />
+      </MemoryRouter>
+    );
+
+    wrapper = mounted.find('ConnectedSignup');
   });
 
-  it('matches the snapshoot of signup Page', () => {
-    const initialState = {};
-    const store = mockStore(initialState);
-
-    const wrapper = shallow(<Provider store={store}>
-      <ConnectedSignup />
-    </Provider>);
+  it('matches the snapshoot', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
   it('render sigup page correctly', () => {
-    const wrapper = shallow(<ConnectedSignup />);
+    wrapper = mount(<MemoryRouter>
+      <ConnectedSignup />
+    </MemoryRouter>);
     expect(wrapper.find('.signup-left').exists()).toBe(true);
     expect(wrapper.find('.signup-right').exists()).toBe(true);
     expect(wrapper.find('h2').text()).toBe('WELCOME');
@@ -41,8 +47,9 @@ describe('<Signup />', () => {
   });
 
   it('should update states when data is passed', () => {
-    const wrapper = mount(<ConnectedSignup />);
+    // const wrapper = mount(<ConnectedSignup />);
     const emailInput = wrapper.find('#email');
+
     emailInput.instance().value = 'anasey@outlook.com';
     emailInput.simulate('change');
 
@@ -64,12 +71,11 @@ describe('<Signup />', () => {
       password: 'password123',
       confirmPassword: 'password123',
     });
-    wrapper.unmount();
   });
 
   it('should submit inputs from the state', () => {
-    const mockSignupFn = jest.fn();
-    const wrapper = mount(<ConnectedSignup signupUser={mockSignupFn} />);
+    // const wrapper = mount(<ConnectedSignup signupUser={mockSignupFn} />);
+    // console.log(wrapper.props())
     const emailInput = wrapper.find('#email');
     emailInput.instance().value = 'anasey@outlook.com';
     emailInput.simulate('change');
@@ -88,7 +94,33 @@ describe('<Signup />', () => {
 
     const form = wrapper.find('form');
     form.simulate('submit');
-    expect(mockSignupFn.mock.calls.length).toBe(1);
-    wrapper.unmount();
+    expect(wrapper.instance().state).toMatchObject(
+      {
+        email: 'anasey@outlook.com',
+        username: 'anasey001',
+        password: 'password123',
+        confirmPassword: 'password123',
+        status: '',
+        successStatus: '',
+        message: '',
+        successMessage: '',
+        display: 'none'
+      }
+    );
+    // expect(mockSignupFn.mock.calls.length).toBe(1);
+    // wrapper.unmount();
+  });
+
+  it('handleSocialButton works as expected', () => {
+    const e = {
+      target: {
+        className: 'social-gl-btn'
+      }
+    };
+    wrapper.instance().handleSocialButton(e);
+    delete e.target.className;
+    wrapper.instance().handleSocialButton(e);
+
+    expect(wrapper.instance().handleSocialButton).toBeDefined();
   });
 });

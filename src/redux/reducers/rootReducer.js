@@ -10,12 +10,14 @@ import categoriesListReducer from './categories-list/categoriesList';
 import addBookmarkReducer from './bookmarks/addBookmarkReducer';
 import createArticle from './create-article/createArticle';
 import searchReducer from './search/searchReducer';
+import socialMediaUserReducer from './socialMedia/socialMediaAuthReducer';
 
 
 export default combineReducers({
   signup: signupReducer,
   login: loginReducer,
   notification: notificationReducer,
+  socialMediaUserReducer,
   featureArticleReducer,
   relatedArticleReducer,
   allArticleReducer,

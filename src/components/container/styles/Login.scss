@@ -1,4 +1,4 @@
-@import '../../../utilities//scss-exports/variables';
+@import '../../../utilities/scss-exports/variables';
 
 .login-left {
   height: 600px;
@@ -46,15 +46,7 @@
    }
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 @media only screen and (max-width: $ipad) {
-=======
-@media only screen and (max-width: $desktop-large) {
->>>>>>> add login functionality
-=======
-@media only screen and (max-width: $ipad) {
->>>>>>> small fixes
   html {
     background-color: #fff;
   }
@@ -70,20 +62,10 @@
     .login-left {
       display: none;
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
 
     .form-button {
       width: 100%;
     }
-=======
->>>>>>> add login functionality
-=======
-
-    button {
-      width: 100%;
-    }
->>>>>>> small fixes
   }
 }
 

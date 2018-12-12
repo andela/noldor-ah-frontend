@@ -21,8 +21,9 @@ import SinglePage from '../components/container/single-article/SingleArticle';
 import Profile from '../components/presentational/profile/Profile';
 import CreateArticle from '../components/container/create-article/CreateArticle';
 import Search from '../components/container/search/Search';
+import SocialMediaAuthPage from '../components/container/socialMediaAuth/SocialMediaAuthPage';
 
-const history = createHistory();
+export const history = createHistory();
 
 const mapStateToProps = state => ({
   notification: state.notification,
@@ -44,6 +45,7 @@ export class ConnectedRoutes extends Component {
         <div>
           <Header history={history} />
           <Switch>
+            <Route path="/auth" component={SocialMediaAuthPage} />
             <Route path={ROUTE_PATH.homepage} component={Homepage} exact />
             <PublicRoute path={ROUTE_PATH.user.login} component={Login} />
             <Route path={ROUTE_PATH.user.logout} component={Logout} />
@@ -53,7 +55,6 @@ export class ConnectedRoutes extends Component {
             <Route exact path={ROUTE_PATH.article.post} component={CreateArticle} />
             <Route path="/search" component={Search} />
             <Route path={ROUTE_PATH.article.single} component={SinglePage} />
-
             <Route component={NotFound} />
           </Switch>
           <Footer />

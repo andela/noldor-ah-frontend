@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SocialButton Shallow rendering matches the snapshot 1`] = `
+<div
+  onClick={[MockFunction]}
+>
+  <a
+    href="somewebsite.com"
+  >
+    <button
+      className="social-btn"
+    />
+  </a>
+</div>
+`;

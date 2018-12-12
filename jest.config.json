@@ -1,7 +1,7 @@
 {
   "clearMocks": true,
 
-  "collectCoverageFrom": ["src/**/*.{js,jsx,mjs}"],
+  "collectCoverageFrom": ["src/**/*.{js,jsx,mjs}", "!src/index.js"],
 
   "coverageDirectory": "coverage",
 

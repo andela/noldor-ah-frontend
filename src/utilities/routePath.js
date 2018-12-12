@@ -9,6 +9,8 @@ const ROUTE_PATH = {
     profile: '/users/:userId/profiles',
     editProfile: '/users/:userId/profiles',
     deactivate: '/users/:userId/deactivate',
+    verify: '/users/verify/',
+    apiVerifyEmail: 'https://noldor-ah-backend-staging.herokuapp.com/api/v1/users/verify'
   },
   article: {
     all: '/articles',

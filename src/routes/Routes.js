@@ -20,13 +20,12 @@ const mapStateToProps = state => ({
   notification: state.notification,
 });
 
-class ConnectedRoutes extends Component {
+export class ConnectedRoutes extends Component {
   constructor(props) {
     super(props);
     const { dispatch } = this.props;
 
     history.listen(() => {
-      // clear notification on location change
       dispatch(notifyClear());
     });
   }

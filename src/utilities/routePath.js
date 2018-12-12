@@ -1,5 +1,5 @@
 const ROUTE_PATH = {
-  homepage: '/home',
+  homepage: '/',
   user: {
     signup: '/signup',
     login: '/login',
@@ -13,10 +13,9 @@ const ROUTE_PATH = {
     apiVerifyEmail: 'https://noldor-ah-backend-staging.herokuapp.com/api/v1/users/verify'
   },
   article: {
+    single: '/:slug',
     all: '/articles',
     post: '/articles',
-    update: '/articles/:slug',
-    delete: '/articles/:slug',
   }
 };
 

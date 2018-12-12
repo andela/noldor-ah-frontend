@@ -5,11 +5,11 @@ const CategoryList = () => {
     <div className="container is-mt1 is-pb1 is-mb2">
       <div className="categories is-pt1">
         <ul>
-          <li >music</li>
+          <li >life</li>
           <li>music</li>
-          <li>music</li>
-          <li>music</li>
-          <li >music</li>
+          <li>travel</li>
+          <li>science</li>
+          <li >finance</li>
 
         </ul>
 

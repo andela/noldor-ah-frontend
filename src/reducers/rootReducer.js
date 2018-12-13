@@ -5,6 +5,7 @@ import notificationReducer from './notification/notificationReducer';
 import featureArticleReducer from './featureArticle/featureArticleReducer';
 import relatedArticleReducer from './relatedArticle/relatedArticleReducer';
 import allArticleReducer from './allArticle/allArticleReducer';
+import anArticle from './singleArticle/singleArticleReducer';
 
 
 export default combineReducers({
@@ -13,5 +14,6 @@ export default combineReducers({
   notification: notificationReducer,
   featureArticleReducer,
   relatedArticleReducer,
-  allArticleReducer
+  allArticleReducer,
+  anArticle
 });

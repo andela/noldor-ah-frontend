@@ -43,8 +43,14 @@ export class Home extends Component {
     this.setState({ ...this.state, page: pageNo });
   }
 
+  viewArticle = (articleId) => {
+    const {
+      history
+    } = this.props;
+    history.push(`/${articleId}`);
+  }
+
   render() {
-    console.log(this.props);
     const { featuredArticle, relatedArticle, allArticles } = this.props;
     if (featuredArticle.isLoading !== false && relatedArticle.isLoading !== false) {
       return <Loading />;
@@ -58,7 +64,7 @@ export class Home extends Component {
         <section className="section">
           <div className="container is-mt3 ">
             <div className="columns is-multiline ">
-              {allArticles.map((article, index) => <AllArticles key={index} article={article} />)}
+              {allArticles.map((article, index) => <AllArticles key={index} article={article} read={this.viewArticle} />)}
             </div>
             <nav className="pagination is-rounded" role="navigation" aria-label="pagination" >
               <Pagination onClick={this.handleClick} isVisible={this.state.page} />
@@ -70,7 +76,7 @@ export class Home extends Component {
           <h1 className="related-article-title has-text-weight-bold">Top Articles</h1>
           <div className="container ">
             <div className="columns footer-article">
-              {relatedArticle.articles.map((x, index) => <RelatedArticle key={index} article={x} />)}
+              {relatedArticle.articles.map((x, index) => <RelatedArticle key={index} article={x} read={this.viewArticle} />)}
             </div>
           </div>
         </section>
@@ -85,7 +91,8 @@ Home.propTypes = {
   relateArticle: PropTypes.func.isRequired,
   relatedArticle: PropTypes.object.isRequired,
   allArticle: PropTypes.func.isRequired,
-  allArticles: PropTypes.array.isRequired
+  allArticles: PropTypes.array.isRequired,
+  history: PropTypes.object
 };
 
 export const mapStateToProps = (state) => {

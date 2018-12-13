@@ -4,8 +4,8 @@ import moment from 'moment';
 import PropTypes from 'prop-types';
 
 const FeaturedArticle = (props) => {
-  const { article } = props;
-  const img = article.featuredImg !== '' ? article.featuredImg : 'https://res.cloudinary.com/dstvcmycn/image/upload/v1544120726/Author%27s%20Haven/image.png';
+  const { article, read } = props;
+  const img = article.featuredImg ? article.featuredImg : 'https://res.cloudinary.com/dstvcmycn/image/upload/v1544120726/Author%27s%20Haven/image.png';
   const featureImgStyle = {
     backgroundImage: `url( ${img} )`,
     backgroundSize: 'cover',
@@ -22,7 +22,7 @@ const FeaturedArticle = (props) => {
             <div className="feature-title-box is-pr1 is-pl1 is-pt1 is-pb1">
               <p className="title is-3 is-size-5-mobile has-text-white is-uppercase">{article.title}</p>
               {article.content && <p className="is-size-7 has-text-weight-light"> {article.content.substring(0, 100)}.....</p>}
-              <button className="button theme-background is-mt1">Read this article</button>
+              <button onClick={() => read(article.slug)} className="button theme-background is-mt1">Read this article</button>
             </div>
           </div>
         </div>
@@ -30,7 +30,7 @@ const FeaturedArticle = (props) => {
           <div className="column">
             <span className="tag grey-bg has-text-white is-medium is-uppercase">featured</span>
           </div>
-          <div className="column is-uppercase is-size-6 has-text-weight-bold">
+          <div className="column is-uppercase is-size- has-text-weight-bold">
             {moment(article.updateAt).format('MMM Do')} &nbsp;&nbsp;
             {article.readingTime}
           </div>
@@ -53,6 +53,7 @@ const FeaturedArticle = (props) => {
   );
 };
 FeaturedArticle.propTypes = {
-  article: PropTypes.object.isRequired
+  article: PropTypes.object.isRequired,
+  read: PropTypes.func
 };
 export default FeaturedArticle;

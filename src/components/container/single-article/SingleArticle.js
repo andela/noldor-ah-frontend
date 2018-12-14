@@ -11,43 +11,40 @@ import CategoryList from '../../common/category-list/CategoryList';
 import Loading from '../../common/loader/Loader';
 import '../styles/SingleArticle.scss';
 
+import '../../presentational/styles/comment.scss';
 
 export class SinglePage extends Component {
-    componentDidMount = () => {
-      // window.scrollTo(0, 0);
-      const { slug } = this.props;
-      this.props.singleArticle(slug);
+  componentDidMount = () => {
+    // window.scrollTo(0, 0);
+    const { slug } = this.props;
+    this.props.singleArticle(slug);
+  }
+
+  render() {
+    const { anArticle } = this.props;
+    this.articleId = anArticle.article.id;
+    if (anArticle.isLoading !== false) {
+      return <Loading />;
     }
 
-    render() {
-      const { anArticle } = this.props;
-      if (anArticle.isLoading !== false) {
-        return <Loading />;
-      }
-
-      return (
-
-        <section >
-
-          <CategoryList />
-          <div className="base-line theme-background" />
-          <SingleArticle article={anArticle.article} />
-        </section>
-      );
-    }
+    return (
+      <section >
+        <CategoryList />
+        <SingleArticle article={anArticle.article} />
+      </section>
+    );
+  }
 }
 
 SinglePage.propTypes = {
   history: PropTypes.object,
   slug: PropTypes.string,
   anArticle: PropTypes.object.isRequired,
-  singleArticle: PropTypes.func.isRequired
-
+  singleArticle: PropTypes.func.isRequired,
 };
 
 
 export const mapStateToProps = (state, ownProp) => {
-  // console.log(state)
   return {
     slug: ownProp.match.params.slug,
     anArticle: state.anArticle

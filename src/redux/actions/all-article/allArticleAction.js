@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import axios from 'axios';
 
 /**
@@ -22,12 +23,14 @@ export function loadAllArticlesFailure(error) {
   };
 }
 
+const DEFAULT_ARTICLES_PER_PAGE = 9;
 export const loadAllArticles = (page = 1) => async (dispatch) => {
   try {
     const request = await axios({
       method: 'GET',
-      url: `https://noldor-ah-backend-staging.herokuapp.com/api/v1/articles/limit/${9}/page/${page}`
+      url: `https://noldor-ah-backend-staging.herokuapp.com/api/v1/articles/limit/${DEFAULT_ARTICLES_PER_PAGE}/page/${page}`
     });
+    localStorage.setItem('pageInfo', request.data.message);
     localStorage.setItem('message', request.data.message.split('of')[1].trim());
     return dispatch(loadAllArticlesSucess(request.data.result));
   } catch (err) {

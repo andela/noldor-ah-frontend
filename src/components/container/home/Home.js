@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import React, { Component } from 'react';
 
 // third-party libraries
@@ -12,7 +11,7 @@ import {
   Banner, RelatedArticle, FeaturedArticle, AllArticles
 } from '../../presentational';
 import CategoryList from '../../common/category-list/CategoryList';
-import Pagination from '../../presentational/home/Pagination';
+import Pagination from '../../presentational/home/Pagination/Pagination';
 import { loadFeatureArticle } from '../../../redux/actions/feature-article/featureArticleAction';
 import { loadRelatedArticles } from '../../../redux/actions/related-articles/relatedArticlesAction';
 import { loadAllArticles } from '../../../redux/actions/all-article/allArticleAction';
@@ -26,13 +25,16 @@ import { addBookmark } from '../../../redux/actions/bookmark/addBookmark';
 
 
 export class Home extends Component {
-  constructor(props, context, page = 1) {
-    super(props, context, page);
+  constructor(props, context) {
+    super(props, context);
     this.state = {
       allArticles: {},
       page: 1
     };
-    this.page = page;
+    this.page = this.state.page;
+    this.displayBanner = this.displayBanner.bind(this);
+    this.pageRef = React.createRef();
+    this.paginationList = React.createRef();
   }
 
   componentDidMount = () => {
@@ -43,10 +45,20 @@ export class Home extends Component {
   }
 
   handleClick = (e) => {
-    const pageNo = e.target.className === 'pagination-next' ? (this.page += 1) : (this.page -= 1);
-    this.props.allArticle(pageNo);
+    let pageNo = this.state.page;
+    if (e.target.classList[0] === 'pagination-link') {
+      pageNo = parseInt(e.target.innerHTML, 10);
+    } else {
+      pageNo = e.target.classList[0] === 'pagination-next'
+        ? (this.page + parseInt(1, 10)) : (this.page - parseInt(1, 10));
+    }
+    const pageList = this.paginationList.current.children;
+    [...pageList].map(page => page.classList.remove('is-current'));
+    e.target.classList.add('is-current');
     this.setState({ allArticles: this.props.allArticle(pageNo) });
+    this.page = pageNo;
     this.setState({ ...this.state, page: pageNo });
+    this.scrollToPageRef();
   }
 
   viewArticle = (articleId) => {
@@ -56,54 +68,91 @@ export class Home extends Component {
     history.push(`/${articleId}`);
   }
 
-   bookmarkArticle = async (slug) => {
-     await this.props.bookmark(slug);
-     const message = this.props.bookmarkMessage;
-     if (message) notifier(message, 'success');
-   }
+  bookmarkArticle = async (slug) => {
+    await this.props.bookmark(slug);
+    const message = this.props.bookmarkMessage;
+    if (message) notifier(message, 'success');
+  }
 
-   displayBanner() {
-     if (isLoggedIn()) {
-       return false;
-     }
-     return <Banner />;
-   }
+  displayBanner() {
+    if (isLoggedIn()) {
+      return false;
+    }
+    return <Banner />;
+  }
 
-   render() {
-     const { featuredArticle, relatedArticle, allArticles } = this.props;
-     if (featuredArticle.isLoading !== false && relatedArticle.isLoading !== false) {
-       return <Loading />;
-     }
-     return (
-       <div>
-         <ToastContainer/>
-         <section className="feat-section">
-           <CategoryList />
-           <FeaturedArticle article = {featuredArticle.article} read={this.viewArticle}/>
-         </section>
-         <section className="section">
-           <div className="container is-mt3 ">
-             <div className="columns is-multiline ">
-               {allArticles.map((article, index) => <AllArticles key={index} article={article} read={this.viewArticle} bookmark={this.bookmarkArticle} />)}
-             </div>
-             <nav className="pagination is-rounded" role="navigation" aria-label="pagination" >
+  scrollToPageRef = () => {
+    window.scrollTo({
+      top: this.pageRef.current.offsetTop,
+      behavior: 'smooth'
+    });
+  }
 
-               <Pagination onClick={this.handleClick} isVisible={this.state.page} />
-             </nav>
-           </div>
-         </section>
-         {this.displayBanner()}
-         <section className="section related-article-head">
-           <h1 className="related-article-title has-text-weight-bold">Top Articles</h1>
-           <div className="container ">
-             <div className="columns footer-article">
-               {relatedArticle.articles.map((x, index) => <RelatedArticle key={index} article={x} read={this.viewArticle} />)}
-             </div>
-           </div>
-         </section>
-       </div>
-     );
-   }
+  extremePages = (e) => {
+    let pageNo = this.state.page;
+    const pageList = this.paginationList.current.children;
+    [...pageList].map(page => page.classList.remove('is-current'));
+    if (e.target.className === 'pagination-link first') {
+      pageNo = 1;
+    } else {
+      pageNo = parseInt(localStorage.getItem('message'), 10);
+    }
+    e.target.classList.add('is-current');
+    this.setState({ allArticles: this.props.allArticle(pageNo) });
+    this.page = pageNo;
+    this.setState({ ...this.state, page: pageNo });
+    this.scrollToPageRef();
+  }
+
+  render() {
+    const { featuredArticle, relatedArticle, allArticles } = this.props;
+    if (featuredArticle.isLoading !== false && relatedArticle.isLoading !== false) {
+      return <Loading />;
+    }
+    return (
+      <div>
+        <ToastContainer />
+        <section className="feat-section">
+          <CategoryList />
+          <FeaturedArticle article={featuredArticle.article} read={this.viewArticle} />
+        </section>
+        <section ref={this.pageRef} className="section">
+          <div className="container is-mt3 ">
+            <div className="columns is-multiline ">
+              {allArticles
+                .map((article, index) => (<AllArticles key={index}
+                  article={article}
+                  read={this.viewArticle}
+                  bookmark={this.bookmarkArticle}
+                />))}
+            </div>
+            <nav className="pagination is-rounded is-pulled-right"
+              role="navigation" aria-label="pagination" >
+              <Pagination
+                onClick={this.handleClick}
+                isVisible={this.state.page}
+                extremePages={this.extremePages}
+                reference={this.paginationList}
+              />
+            </nav>
+          </div>
+        </section>
+        {this.displayBanner()}
+        <section className="section related-article-head">
+          <h1 className="related-article-title has-text-weight-bold">Top Articles</h1>
+          <div className="container ">
+            <div className="columns footer-article">
+              {relatedArticle.articles
+                .map((x, index) => (<RelatedArticle
+                  key={index} article={x}
+                  read={this.viewArticle}
+                />))}
+            </div>
+          </div>
+        </section>
+      </div>
+    );
+  }
 }
 
 Home.propTypes = {

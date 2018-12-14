@@ -3,7 +3,7 @@ import { mount } from 'enzyme';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
-import Pagination from '../../../components/presentational/home/Pagination';
+import Pagination from '../../../components/presentational/home/Pagination/Pagination';
 import { loadAllArticles } from './allArticleAction';
 
 const middlewares = [thunk];

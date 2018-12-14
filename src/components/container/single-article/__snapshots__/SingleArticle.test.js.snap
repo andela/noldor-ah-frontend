@@ -5,9 +5,6 @@ exports[`landing page should show page is loading 1`] = `<Loading />`;
 exports[`landing page should show page is loading 2`] = `
 <section>
   <Connect(CategoriesList) />
-  <div
-    className="base-line theme-background"
-  />
   <SingleArticle
     article={Array []}
   />

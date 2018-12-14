@@ -1,5 +1,7 @@
 import Axios from 'axios';
-import { LOGIN_BEGIN, LOGIN_SUCCESS, LOGIN_ERROR } from '../../types/login';
+import {
+  LOGIN_BEGIN, LOGIN_SUCCESS, LOGIN_ERROR, LOGOUT
+} from '../../types/login';
 import { notifySuccess, notifyError } from '../notification/notificationAction';
 
 export const loginBegin = () => ({ type: LOGIN_BEGIN });
@@ -11,6 +13,7 @@ export const loginError = error => ({
   type: LOGIN_ERROR,
   payload: error,
 });
+const logout = () => ({ type: LOGOUT });
 
 /**
  *
@@ -34,3 +37,5 @@ export const loginRequest = (user) => {
       });
   };
 };
+
+export const logoutRequest = () => dispatch => dispatch(logout());

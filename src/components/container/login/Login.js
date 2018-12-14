@@ -61,7 +61,7 @@ export class ConnectedLogin extends Component {
     } = this.state;
 
     return (
-      <div className="container columns is-desktop level login-container">
+      <div className="container is-desktop level login-container">
         <div className="container column is-half login-left" />
         <div className="container column level level-item login-right">
           <div className="login-intro-container">

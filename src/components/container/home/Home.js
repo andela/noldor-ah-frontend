@@ -15,6 +15,7 @@ import { loadFeatureArticle } from '../../../actions/featureArticleAction';
 import { loadRelatedArticles } from '../../../actions/relatedArticlesAction';
 import { loadAllArticles } from '../../../actions/allArticleAction';
 import Loading from '../../common/Loader';
+import isLoggedIn from '../../../utilities/publicRoute/isLoggedIn';
 
 // styles
 import './style/home.scss';
@@ -27,6 +28,7 @@ export class Home extends Component {
       page: 1
     };
     this.page = page;
+    this.displayBanner = this.displayBanner.bind(this);
   }
 
   componentDidMount = () => {
@@ -50,6 +52,13 @@ export class Home extends Component {
     history.push(`/${articleId}`);
   }
 
+  displayBanner() {
+    if (isLoggedIn()) {
+      return false;
+    }
+    return <Banner />;
+  }
+
   render() {
     const { featuredArticle, relatedArticle, allArticles } = this.props;
     if (featuredArticle.isLoading !== false && relatedArticle.isLoading !== false) {
@@ -71,7 +80,7 @@ export class Home extends Component {
             </nav>
           </div>
         </section>
-        <Banner />
+        {this.displayBanner()}
         <section className="section related-article-head">
           <h1 className="related-article-title has-text-weight-bold">Top Articles</h1>
           <div className="container ">

@@ -1,0 +1,15 @@
+@import '../../../utilities/scss-exports/variables';
+
+.form-button {
+  background-color: $ah-primary;
+  color: white;
+  border-style: none;
+  border-radius: 3px;
+  padding: 1em 5em;
+}
+
+.form-button:hover {
+  opacity: .8;
+  color: white;
+  cursor: pointer;
+}

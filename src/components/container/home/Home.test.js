@@ -1,8 +1,8 @@
 import React from 'react';
 import { mount, shallow } from 'enzyme';
 import { Home, mapDispatchToProps, mapStateToProps } from './Home';
-import { loadFeatureArticle } from '../../../actions/featureArticleAction';
-import { loadRelatedArticles } from '../../../actions/relatedArticlesAction';
+import { loadFeatureArticle } from '../../../redux/actions/feature-article/featureArticleAction';
+import { loadRelatedArticles } from '../../../redux/actions/related-articles/relatedArticlesAction';
 
 describe('landing page', () => {
   const getProps = isLoading => (
@@ -56,7 +56,6 @@ describe('landing page', () => {
     const props = {
       featureArticle: () => loadFeatureArticle(),
       relateArticle: () => loadRelatedArticles()
-
     };
     expect(mapDispatchToProps).toBeDefined();
     // expect(mapDispatchToProps).toHaveReturned({ ...props });

@@ -10,15 +10,15 @@ import PropTypes from 'prop-types';
 import {
   Banner, RelatedArticle, CategoryList, FeaturedArticle, AllArticles
 } from '../../presentational';
-import Pagination from '../../presentational/Home/Pagination';
-import { loadFeatureArticle } from '../../../actions/featureArticleAction';
-import { loadRelatedArticles } from '../../../actions/relatedArticlesAction';
-import { loadAllArticles } from '../../../actions/allArticleAction';
-import Loading from '../../common/Loader';
-import isLoggedIn from '../../../utilities/publicRoute/isLoggedIn';
+import Pagination from '../../presentational/home/Pagination';
+import { loadFeatureArticle } from '../../../redux/actions/feature-article/featureArticleAction';
+import { loadRelatedArticles } from '../../../redux/actions/related-articles/relatedArticlesAction';
+import { loadAllArticles } from '../../../redux/actions/all-article/allArticleAction';
+import Loading from '../../common/loader/Loader';
+import isLoggedIn from '../../../utilities/is-logged-in/isLoggedIn';
 
 // styles
-import './style/home.scss';
+import '../styles/Home.scss';
 
 export class Home extends Component {
   constructor(props, context, page = 1) {

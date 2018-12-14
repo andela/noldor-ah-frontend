@@ -2,7 +2,7 @@
 
 exports[`<Login /> shallow rendering tests matches the snapshot 1`] = `
 <div
-  className="container columns is-desktop level login-container"
+  className="container is-desktop level login-container"
 >
   <div
     className="container column is-half login-left"

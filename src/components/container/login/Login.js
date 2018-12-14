@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import propTypes from 'prop-types';
-import { loginRequest } from '../../../actions/login/loginAction';
+import { loginRequest } from '../../../redux/actions/login/loginAction';
 import { Input, Notification, Button } from '../../presentational/index';
-import { LOGIN_SUCCESS } from '../../../types/login';
-import './styles/Login.scss';
+import { LOGIN_SUCCESS } from '../../../redux/types/login';
+import '../styles/Login.scss';
 
 const mapStateToProps = state => ({
   notification: state.notification,

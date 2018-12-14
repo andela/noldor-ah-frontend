@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Notification from '../../presentational/notification/Notification';
-import ModalNotification from '../../presentational/ModalNotification';
-import { signupRequest } from '../../../actions/signup/signupAction';
-import '../styles/signup.scss';
+import ModalNotification from '../../presentational/modal-notification/ModalNotification';
+import { signupRequest } from '../../../redux/actions/signup/signupAction';
+import '../styles/Signup.scss';
 
 export class ConnectedSignup extends Component {
   constructor(props) {

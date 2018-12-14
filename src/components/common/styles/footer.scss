@@ -1,0 +1,12 @@
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  max-height: 50px;
+  padding: 1em;
+  text-align: left;
+  background-color: black;
+  color: grey;
+  z-index: 500;
+}

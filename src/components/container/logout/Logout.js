@@ -1,8 +1,7 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
-// import { logoutRequest } from '../../../redux/actions/login/loginAction';
-import { logoutRequest } from '../../../actions/login/loginAction';
+import { logoutRequest } from '../../../redux/actions/login/loginAction';
 
 export const mapDispatchToProps = dispatch => ({
   logout: () => dispatch(logoutRequest())

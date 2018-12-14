@@ -1,6 +1,6 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import './styles/Notification.scss';
+import '../styles/Notification.scss';
 
 const Notification = (props) => {
   const { status, message, display } = props;

@@ -13,6 +13,7 @@ import Signup from '../components/container/Signup/Signup';
 import { notifyClear } from '../actions/notification/notificationAction';
 import EmailVerified from '../components/container/EmailVerified/EmailVerified';
 import Homepage from '../components/container/home/Home';
+import SinglePage from '../components/container/article/SingleArticle';
 
 const history = createHistory();
 
@@ -37,6 +38,7 @@ export class ConnectedRoutes extends Component {
           <Route path={ROUTE_PATH.homepage} component={Homepage} exact />
           <PublicRoute path={ROUTE_PATH.user.login} component={Login} />
           <Route path={ROUTE_PATH.user.signup} component={Signup} />
+          <Route path={ROUTE_PATH.article.single} component={SinglePage} />
           <Route path={ROUTE_PATH.user.verify} component={EmailVerified}/>
 
           <Route component={NotFound} />

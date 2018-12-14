@@ -14,7 +14,7 @@ import './style.scss';
 
 export class SinglePage extends Component {
     componentDidMount = () => {
-      // window.scrollTo(0, 0);
+      window.scrollTo(0, 0);
       const { slug } = this.props;
       this.props.singleArticle(slug);
     }

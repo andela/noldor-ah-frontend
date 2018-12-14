@@ -32,6 +32,7 @@ export class Home extends Component {
   }
 
   componentDidMount = () => {
+    window.scrollTo(0, 0);
     this.props.featureArticle();
     this.props.relateArticle();
     this.props.allArticle();

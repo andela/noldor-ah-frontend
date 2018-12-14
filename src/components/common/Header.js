@@ -1,39 +1,130 @@
-
+/* eslint-disable global-require */
 import React from 'react';
+import { Link } from 'react-router-dom';
+import propTypes from 'prop-types';
+import isLoggedIn from '../../utilities/publicRoute/isLoggedIn';
 import './style/header.scss';
 
+let toggle, menu;
+
 class Header extends React.Component {
-  render() {
-    const isAuth = true;
-    return (
-      <nav className="nav_bar">
-        <label className="search-bar">
-          <i className="fas fa-search">search</i>
-          <input type="search" name="search" placeholder="Search..."/>
-        </label>
-        <div className="logo-position">
-          <img className="logo-size"
-            // eslint-disable-next-line max-len
-            src="https://res.cloudinary.com/dstvcmycn/image/upload/v1544181357/Author%27s%20Haven/image_1.png"/>
+  constructor(props) {
+    super(props);
+
+    this.handleBurger = this.handleBurger.bind(this);
+    this.expandNavLinks = this.expandNavLinks.bind(this);
+  }
+
+  componentDidMount() {
+    toggle = document.querySelector('#menu-toggle');
+    menu = document.querySelector('#menu');
+
+    this.props.history.listen(() => {
+      document.querySelector('.nav-search').value = '';
+      if (toggle.classList.contains('is-active')) {
+        toggle.classList.remove('is-active');
+        menu.classList.remove('show-menu');
+      }
+    });
+  }
+
+  handleBurger(event) {
+    event.preventDefault();
+
+    toggle.classList.toggle('is-active');
+    menu.classList.toggle('show-menu');
+  }
+
+  expandNavLinks() {
+    if (!isLoggedIn()) {
+      return (
+        <div id="menu" className="nav-right">
+          <div key="login" className="nav-item">
+            <Link className="nav-link" to="login">
+              <i className="fas fa-sign-in-alt" />
+              <span>Login</span>
+            </Link>
+          </div>
+
+          <div key="signup" className="nav-item">
+            <Link className="nav-link" to="signup">
+              <i className="fas fa-user-plus" />
+              <span>Signup</span>
+            </Link>
+          </div>
         </div>
-        <nav className="global_toolbar">
-          {isAuth && <ul className="is-notuser">
-            <li>
-              <a href="/signup" className="button theme-background has-text-white is-small">
-                <strong>Sign up</strong>
-              </a>
-            </li>
-            <li><a href="/login"className="button is-white is-small">Log in</a></li>
-          </ul>
-          }
-          {!isAuth && <ul className="is-user">
-            <li><a><i className="has-text-black fas fa-bell" /></a></li>
-            <li><a><i className="has-text-black fas fa-user-circle" /></a></li>
-          </ul>
-          }
-        </nav>
+      );
+    }
+
+    return (
+      <div id="menu" className="nav-right nav-logged-in">
+        <div key="profile" className="nav-item">
+          <Link className="nav-link" to="profile">
+            <i className="fas fa-user-alt" />
+            <span>Profile</span>
+          </Link>
+        </div>
+
+        <div key="new-article" className="nav-item">
+          <Link className="nav-link" to="new-article">
+            <i className="fas fa-file-alt" />
+            <span>New Article</span>
+          </Link>
+        </div>
+
+        <div key="favorites" className="nav-item">
+          <Link className="nav-link" to="favorites">
+            <i className="fas fa-star" />
+            <span>Favorites</span>
+          </Link>
+        </div>
+
+        <div key="logout" className="nav-item">
+          <Link className="nav-link" to="logout">
+            <i className="fas fa-sign-out-alt" />
+            <span>Logout</span>
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
+  render() {
+    return (
+      <nav className="nav" role="navigation" aria-label="main navigation">
+        <div className="nav-left">
+          <div className="nav-item">
+            <input className="nav-search" type="text" placeholder="&#x1F50D;" />
+          </div>
+        </div>
+
+        <div className="nav-center">
+          <Link className="nav-item" to="/">
+            <img id="nav-logo" src={require('../../static/images/logo.png')} width="200" />
+          </Link>
+        </div>
+
+        <a
+          key="profile-toggle"
+          id="menu-toggle"
+          role="button"
+          className="navbar-burger burger"
+          data-target="menu"
+          onClick={this.handleBurger}
+        >
+          <span aria-hidden="true" />
+          <span aria-hidden="true" />
+          <span aria-hidden="true" />
+        </a>
+
+        {this.expandNavLinks()}
       </nav>
     );
   }
 }
+
+Header.propTypes = {
+  history: propTypes.object.isRequired,
+};
+
 export default Header;

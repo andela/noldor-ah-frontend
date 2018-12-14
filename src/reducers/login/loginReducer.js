@@ -1,16 +1,22 @@
-import { LOGIN_BEGIN, LOGIN_SUCCESS, LOGIN_ERROR } from '../../types/login';
+import {
+  LOGIN_BEGIN, LOGIN_SUCCESS, LOGIN_ERROR, LOGOUT
+} from '../../types/login';
 
-let initialState = {
-  loading: false,
-  success: false,
-  error: null,
-  token: null,
-  id: null,
-};
+let initialState;
 
 try {
-  const store = JSON.parse(localStorage.getItem('store'));
-  initialState = store.login;
+  const persistedLogin = JSON.parse(localStorage.getItem('login'));
+  if (persistedLogin) {
+    initialState = persistedLogin;
+  } else {
+    initialState = {
+      loading: false,
+      success: false,
+      error: null,
+      token: null,
+      id: null,
+    };
+  }
 } catch (error) { /* do nothing */ }
 
 const loginReducer = (state = initialState, action) => {
@@ -35,6 +41,15 @@ const loginReducer = (state = initialState, action) => {
       ...state,
       loading: false,
       error: action.payload,
+    };
+
+  case LOGOUT:
+    return {
+      ...state,
+      success: true,
+      loading: false,
+      token: null,
+      id: null,
     };
 
   default:

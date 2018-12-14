@@ -37,14 +37,10 @@ const SingleArticle = (article) => {
         <div className="article-content is-size-6 is-size-7-mobile">{content}</div>
         <div className="article-reaction is-pt2">
           <span className="article-like is-mr2">
-            <i className="fa fa-heart " />
-            { !likes ? 0 : likes }
-          </span>
-
+            <i className="fa fa-heart " /> { !likes ? 0 : likes }</span>
 
           <span className="article-share">
-            <i className="fa fa-share-alt" /> &nbsp;
-                        share</span>
+            <i className="fa fa-share-alt" /> &nbsp; share</span>
         </div>
       </div>
       <div className="article-footer" />

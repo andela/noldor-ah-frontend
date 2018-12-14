@@ -3,6 +3,7 @@ const ROUTE_PATH = {
   user: {
     signup: '/signup',
     login: '/login',
+    logout: '/logout',
     all: '/users',
     forgotPassword: '/users/forgot',
     resetPassword: '/users/forgot/:hash',

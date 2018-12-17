@@ -10,11 +10,11 @@ import PropTypes from 'prop-types';
 import {
   Banner, RelatedArticle, CategoryList, FeaturedArticle, AllArticles
 } from '../../presentational';
-import Pagination from '../../presentational/Home/Pagination';
-import { loadFeatureArticle } from '../../../redux/actions/Feature-Article/featureArticleAction';
-import { loadRelatedArticles } from '../../../redux/actions/Related-Articles/relatedArticlesAction';
-import { loadAllArticles } from '../../../redux/actions/All-Article/allArticleAction';
-import Loading from '../../common/Loader/Loader';
+import Pagination from '../../presentational/home/Pagination';
+import { loadFeatureArticle } from '../../../redux/actions/feature-article/featureArticleAction';
+import { loadRelatedArticles } from '../../../redux/actions/related-articles/relatedArticlesAction';
+import { loadAllArticles } from '../../../redux/actions/all-article/allArticleAction';
+import Loading from '../../common/loader/Loader';
 import isLoggedIn from '../../../utilities/is-logged-in/isLoggedIn';
 
 // styles

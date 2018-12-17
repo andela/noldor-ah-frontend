@@ -5,7 +5,7 @@ import {
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import createHistory from 'history/createBrowserHistory';
-import PublicRoute from '../utilities/publicRoute/publicRoute';
+import PublicRoute from '../utilities/public-route/publicRoute';
 import ROUTE_PATH from '../utilities/route-path/routePath';
 import Login from '../components/container/login/Login';
 import NotFound from '../components/presentational/404/404';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import FeaturedArticle from './FeaturedArticle';
+import FeaturedArticle from './featuredArticle';
 
 
 describe('display banner', () => {

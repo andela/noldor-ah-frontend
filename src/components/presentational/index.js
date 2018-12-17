@@ -3,7 +3,7 @@ import Input from './input/Input';
 import Notification from './notification/Notification';
 import ModalNotification from './modal-notification/ModalNotification';
 import Button from './button/Button';
-import FeaturedArticle from './home/FeaturedArticle';
+import FeaturedArticle from './home/featuredArticle';
 import RelatedArticle from './related-articles/RelatedArticles';
 import AllArticles from './home/AllArticles';
 import CategoryList from './category-list/CategoryList';

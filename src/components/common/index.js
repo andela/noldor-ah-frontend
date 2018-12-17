@@ -1,5 +1,5 @@
-import Header from './header/Header';
-import Footer from './footer/Footer';
+import Header from './Header/Header';
+import Footer from './Footer/Footer';
 
 export {
   Header,

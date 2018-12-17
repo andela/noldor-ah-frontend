@@ -1,9 +1,9 @@
-import allArticleAction from './all-article/allArticleAction';
-import featureArticleAction from './feature-article/featureArticleAction';
-import loginAction from './login/loginAction';
-import notificationAction from './notification/notificationAction';
-import relatedArticlesAction from './related-articles/relatedArticlesAction';
-import signupAction from './signup/signupAction';
+import allArticleAction from './All-Article/allArticleAction';
+import featureArticleAction from './Feature-Article/featureArticleAction';
+import loginAction from './Login/loginAction';
+import notificationAction from './Notification/notificationAction';
+import relatedArticlesAction from './Related-Articles/relatedArticlesAction';
+import signupAction from './Signup/signupAction';
 
 export default {
   allArticleAction,

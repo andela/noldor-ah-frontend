@@ -5,10 +5,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import SingleArticle from '../../presentational/article/singleArticle';
-import { loadAnArticle } from '../../../redux/actions/single-article/singleArticleAction';
-import CategoryList from '../../presentational/category-list/CategoryList';
-import Loading from '../../common/loader/Loader';
+import SingleArticle from '../../presentational/Article/singleArticle';
+import { loadAnArticle } from '../../../redux/actions/Single-Article/singleArticleAction';
+import CategoryList from '../../presentational/Category-List/CategoryList';
+import Loading from '../../common/Loader/Loader';
 
 import './style.scss';
 

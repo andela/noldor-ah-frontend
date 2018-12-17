@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
-import signupReducer from './signup/signupReducer';
-import loginReducer from './login/loginReducer';
-import notificationReducer from './notification/notificationReducer';
-import featureArticleReducer from './feature-article/featureArticleReducer';
-import relatedArticleReducer from './related-article/relatedArticleReducer';
-import allArticleReducer from './all-article/allArticleReducer';
-import anArticle from './single-article/singleArticleReducer';
+import signupReducer from './Signup/signupReducer';
+import loginReducer from './Login/loginReducer';
+import notificationReducer from './Notification/notificationReducer';
+import featureArticleReducer from './Feature-Article/featureArticleReducer';
+import relatedArticleReducer from './Related-Article/relatedArticleReducer';
+import allArticleReducer from './All-Article/allArticleReducer';
+import anArticle from './Single-Article/singleArticleReducer';
 
 
 export default combineReducers({

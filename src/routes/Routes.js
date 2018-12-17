@@ -16,6 +16,7 @@ import Homepage from '../components/container/home/Home';
 import Header from '../components/common/header/Header';
 import Logout from '../components/container/logout/Logout';
 import Footer from '../components/common/footer/Footer';
+// eslint-disable-next-line import/no-named-as-default
 import SinglePage from '../components/container/article/SingleArticle';
 import Profile from '../components/presentational/profile/Profile';
 

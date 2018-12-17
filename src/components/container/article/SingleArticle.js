@@ -6,9 +6,9 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import SingleArticle from '../../presentational/article/singleArticle';
-import { loadAnArticle } from '../../../actions/singlearticle/singleArticleAction';
-import CategoryList from '../../presentational/CategoryList';
-import Loading from '../../common/Loader';
+import { loadAnArticle } from '../../../redux/actions/single-article/singleArticleAction';
+import CategoryList from '../../presentational/category-list/CategoryList';
+import Loading from '../../common/loader/Loader';
 
 import './style.scss';
 

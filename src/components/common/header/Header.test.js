@@ -14,4 +14,12 @@ describe('test header', () => {
   it('should render the header', () => {
     expect(wrapper.find('.nav').exists()).toBe(true);
   });
+  it('should handle toggle click', () => {
+    const toggler = wrapper.find('#menu-toggle');
+    toggler.simulate('click', {
+      preventDefault: () => { }
+    });
+
+    expect(props.handleBurger.mock.calls).toHaveBeenCalled();
+  });
 });

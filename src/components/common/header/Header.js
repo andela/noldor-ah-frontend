@@ -4,40 +4,46 @@ import propTypes from 'prop-types';
 import { isLoggedIn } from '../../../utilities/index';
 import '../styles/header.scss';
 
-let toggle, menu;
-
 class Header extends React.Component {
   constructor(props) {
     super(props);
+
+    this.toggler = React.createRef();
+    this.menu = React.createRef();
+    this.navSearch = React.createRef();
 
     this.handleBurger = this.handleBurger.bind(this);
     this.expandNavLinks = this.expandNavLinks.bind(this);
   }
 
   componentDidMount() {
-    toggle = document.querySelector('#menu-toggle');
-    menu = document.querySelector('#menu');
+    const {
+      toggler,
+      menu,
+      navSearch
+    } = this;
 
     this.props.history.listen(() => {
-      document.querySelector('.nav-search').value = '';
-      if (toggle.classList.contains('is-active')) {
-        toggle.classList.remove('is-active');
-        menu.classList.remove('show-menu');
+      navSearch.current.value = '';
+      if (toggler.current.classList.contains('is-active')) {
+        toggler.current.classList.remove('is-active');
+        menu.current.classList.remove('show-menu');
       }
     });
   }
 
   handleBurger(event) {
     event.preventDefault();
+    const { toggler, menu } = this;
 
-    toggle.classList.toggle('is-active');
-    menu.classList.toggle('show-menu');
+    toggler.current.classList.toggle('is-active');
+    menu.current.classList.toggle('show-menu');
   }
 
   expandNavLinks() {
     if (!isLoggedIn()) {
       return (
-        <div id="menu" className="nav-right">
+        <div id="menu" className="nav-right" ref={this.menu}>
           <div key="login" className="nav-item">
             <Link className="nav-link" to="login">
               <i className="fas fa-sign-in-alt" />
@@ -56,7 +62,7 @@ class Header extends React.Component {
     }
 
     return (
-      <div id="menu" className="nav-right nav-logged-in">
+      <div id="menu" className="nav-right nav-logged-in" ref={this.menu}>
         <div key="profile" className="nav-item">
           <Link className="nav-link" to="profile">
             <i className="fas fa-user-alt" />
@@ -93,7 +99,12 @@ class Header extends React.Component {
       <nav className="nav" role="navigation" aria-label="main navigation">
         <div className="nav-left">
           <div className="nav-item">
-            <input className="nav-search" type="text" placeholder="&#x1F50D;" />
+            <input
+              className="nav-search"
+              type="text"
+              ref={this.navSearch}
+              placeholder="&#x1F50D;"
+            />
           </div>
         </div>
 
@@ -110,6 +121,7 @@ class Header extends React.Component {
           className="navbar-burger burger"
           data-target="menu"
           onClick={this.handleBurger}
+          ref={this.toggler}
         >
           <span aria-hidden="true" />
           <span aria-hidden="true" />

@@ -1,12 +1,6 @@
 .notification {
-    padding: .5rem;
-    div {
-      width: 100%;
-      margin-bottom: .2em;
-    }
-  }
-
+  padding: .5rem;
+}
 .notification:not(:last-child) {
   margin: 1.5rem 0;
 }
-  

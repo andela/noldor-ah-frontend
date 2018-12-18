@@ -2,6 +2,7 @@
 import React from 'react';
 import moment from 'moment';
 import PropTypes from 'prop-types';
+import Parser from 'html-react-parser';
 
 const AllArticles = (props) => {
   const { read } = props;
@@ -25,9 +26,9 @@ const AllArticles = (props) => {
             <p className=" is-size-6">
               {props.article.title}
             </p>
-            {props.article.content && <p className=" has-text-grey is-size-7 is-pb1">
-              {props.article.content.substring(0, 100)}.....
-            </p>}
+            {props.article.content && <h6 className=" has-text-grey is-size-7 is-pb1">
+              {Parser(`${props.article.content.substring(0, 100)}.....`)}
+            </h6>}
             {props.article.User && <p className="is-size-6">
               &nbsp;{props.article.User.username}</p> }
           </div>

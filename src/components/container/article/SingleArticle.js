@@ -7,10 +7,10 @@ import PropTypes from 'prop-types';
 
 import SingleArticle from '../../presentational/article/singleArticle';
 import { loadAnArticle } from '../../../redux/actions/single-article/singleArticleAction';
-import CategoryList from '../../presentational/category-list/CategoryList';
+import CategoryList from '../../common/category-list/CategoryList';
 import Loading from '../../common/loader/Loader';
-
 import './style.scss';
+
 
 export class SinglePage extends Component {
     componentDidMount = () => {
@@ -30,6 +30,7 @@ export class SinglePage extends Component {
         <section >
 
           <CategoryList />
+          <div className="base-line theme-background" />
           <SingleArticle article={anArticle.article} />
         </section>
       );

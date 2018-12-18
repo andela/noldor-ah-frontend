@@ -1,5 +1,6 @@
 import React from 'react';
-import { mount, shallow } from 'enzyme';
+
+import { shallow } from 'enzyme';
 import { SinglePage, mapDispatchToProps, mapStateToProps } from './SingleArticle';
 // import { loadAnArticle } from '../../../actions/singlearticle/singleArticleAction';
 
@@ -34,16 +35,16 @@ describe('landing page', () => {
 
   it('should show loading if props havent returned', () => {
     const props = getProps(true);
-    const wrapper = mount(<SinglePage {...props} />);
+    const wrapper = shallow(<SinglePage {...props} />);
     expect(wrapper.find('Loading')).toBeDefined();
     expect(wrapper.find('Loader')).toBeDefined();
     expect(wrapper.find('Hearts')).toBeDefined();
-    expect(wrapper.find('svg')).toHaveLength(1);
+    expect(wrapper.find('svg')).toHaveLength(0);
   });
 
   it('should show page after loading ', () => {
     const props = getProps(false);
-    const wrapper = mount(<SinglePage {...props} />);
+    const wrapper = shallow(<SinglePage {...props} />);
     expect(wrapper.find('footer-article')).toBeDefined();
   });
 

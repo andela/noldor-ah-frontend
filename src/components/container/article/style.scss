@@ -10,6 +10,39 @@
     margin-left: auto;
     position: relative;
   }
+  .is-70x70{
+    width:80px!important;
+    height:80px!important;
+  }
+  @media(min-width:425px){
+    
+   
+  }
+  .edit-button{
+    position: absolute;
+    right: 0px;
+    top: 5px;
+    font-size: 20px;
+  }
+  .article-author{
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+  }
+  .article-header{
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+  .article-author-image{
+      width: 70px!important;
+      height: 70px!important;
+  }
+  .article-author-details{
+    display: flex;
+    flex-direction: column;
+    // align-self: center;
+    padding-top: 15px;
+  }
   .article-profile {
         position: relative;
         width: 100px;
@@ -31,8 +64,6 @@
     }
     .article-content{
       color: #787878;
-      padding-left:40px;
-      padding-right: 40px;
     }
     .article-reaction{
       padding-left:40px;

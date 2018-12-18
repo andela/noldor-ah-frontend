@@ -6,6 +6,7 @@ import featureArticleReducer from './feature-article/featureArticleReducer';
 import relatedArticleReducer from './related-article/relatedArticleReducer';
 import allArticleReducer from './all-article/allArticleReducer';
 import anArticle from './single-article/singleArticleReducer';
+import categoriesListReducer from './categories-list/categoriesList';
 
 
 export default combineReducers({
@@ -15,5 +16,6 @@ export default combineReducers({
   featureArticleReducer,
   relatedArticleReducer,
   allArticleReducer,
-  anArticle
+  anArticle,
+  categoriesListReducer
 });

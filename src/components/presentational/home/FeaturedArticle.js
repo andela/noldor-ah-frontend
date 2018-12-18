@@ -2,6 +2,7 @@
 import React from 'react';
 import moment from 'moment';
 import PropTypes from 'prop-types';
+import Parser from 'html-react-parser';
 
 const FeaturedArticle = (props) => {
   const { article, read } = props;
@@ -21,7 +22,7 @@ const FeaturedArticle = (props) => {
           <div className="feature-overlay is-pt3 is-pb3 is-curvedleft">
             <div className="feature-title-box is-pr1 is-pl1 is-pt1 is-pb1">
               <p className="title is-3 is-size-5-mobile has-text-white is-uppercase">{article.title}</p>
-              {article.content && <p className="is-size-7 has-text-weight-light"> {article.content.substring(0, 100)}.....</p>}
+              {article.content && <p className="is-size-7 has-text-weight-light"> {Parser(`${article.content.substring(0, 100)}.....`)} </p>}
               <button onClick={() => read(article.slug)} className="button theme-background is-mt1">Read this article</button>
             </div>
           </div>

@@ -24,7 +24,7 @@ describe('', () => {
         slug: 'slavery-e4a3061db678',
         title: 'Coming forth',
         description: 'description',
-        content: 'the content',
+        content: 'the content'
       }
     ];
 

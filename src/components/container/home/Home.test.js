@@ -82,7 +82,7 @@ describe('landing page', () => {
   });
 
   it('define mapStateToProps', () => {
-    const state = {};
+    const state = { addBookmarkReducer: { message: '' } };
     expect(mapStateToProps(state)).toBeDefined();
   });
   it('define mapDispatchToProps', () => {

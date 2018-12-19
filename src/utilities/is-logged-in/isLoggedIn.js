@@ -7,4 +7,11 @@ const isLoggedIn = () => {
   return false;
 };
 
+export const isUser = (id) => {
+  try {
+    if (store.getState().login.id === id) return true;
+  } catch (error) { /* do nothing */ }
+  return false;
+};
+
 export default isLoggedIn;

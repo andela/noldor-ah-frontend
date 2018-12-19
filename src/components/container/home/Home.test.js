@@ -1,8 +1,12 @@
 import React from 'react';
-import { mount, shallow } from 'enzyme';
-import { Home, mapDispatchToProps, mapStateToProps } from './Home';
-import { loadFeatureArticle } from '../../../redux/actions/feature-article/featureArticleAction';
-import { loadRelatedArticles } from '../../../redux/actions/related-articles/relatedArticlesAction';
+import { shallow } from 'enzyme';
+import { Provider } from 'react-redux';
+import configureMockStore from 'redux-mock-store';
+import Home2, { Home, mapDispatchToProps, mapStateToProps } from './Home';
+
+const mockStore = configureMockStore();
+const store = mockStore({});
+
 
 describe('landing page', () => {
   const getProps = isLoading => (
@@ -13,38 +17,67 @@ describe('landing page', () => {
       },
       relatedArticle: {
         isLoading,
-        articles: []
+        articles: [{ readTime: '1', title: 'title', description: 'description' }]
       },
-      allArticles: [],
+      allArticles: [{ readTime: '1', title: 'title', description: 'description' }],
       featureArticle: () => {},
       relateArticle: () => {},
       allArticle: () => {}
     }
   );
-  it('should show page is loading', () => {
+  it('snap shot', () => {
     const props = getProps(true);
     const component = shallow(<Home {...props}/>);
     expect(component).toMatchSnapshot();
   });
 
-  it('should show page is loading', () => {
+  it('after loading', () => {
     const props = getProps(false);
     const component = shallow(<Home {...props}/>);
+    expect(component.find('FeaturedArticle')).toBeDefined();
+    expect(component.find('Pagination')).toBeDefined();
+    expect(component.find('Banner')).toBeDefined();
+    expect(component.find('Connect')).toBeDefined();
+    expect(component.find('RelatedArticle')).toBeDefined();
+    expect(component.find('.is-multiline')).toBeDefined();
+  });
+
+  it('after loading', () => {
+    const props = getProps(true);
+    const component = shallow(<Home {...props}/>);
+    expect(component.find('Loading')).toBeDefined();
+  });
+
+  it('should show page is loading', () => {
+    const props = getProps(false);
+    const component = shallow(
+      <Provider store={store}>
+        <Home2 {...props}/>
+      </Provider>
+    );
     expect(component).toMatchSnapshot();
   });
 
   it('should show loading if props havent returned', () => {
     const props = getProps(true);
-    const wrapper = mount(<Home {...props} />);
+    const wrapper = shallow(
+      <Provider store={store}>
+        <Home {...props}/>
+      </Provider>
+    );
+
     expect(wrapper.find('Loading')).toBeDefined();
     expect(wrapper.find('Loader')).toBeDefined();
     expect(wrapper.find('Hearts')).toBeDefined();
-    expect(wrapper.find('svg')).toHaveLength(1);
   });
 
   it('should show page after loading ', () => {
     const props = getProps(false);
-    const wrapper = mount(<Home {...props} />);
+    const wrapper = shallow(
+      <Provider store={store}>
+        <Home {...props}/>
+      </Provider>
+    );
     expect(wrapper.find('footer-article')).toBeDefined();
   });
 
@@ -53,11 +86,9 @@ describe('landing page', () => {
     expect(mapStateToProps(state)).toBeDefined();
   });
   it('define mapDispatchToProps', () => {
-    const props = {
-      featureArticle: () => loadFeatureArticle(),
-      relateArticle: () => loadRelatedArticles()
-    };
     expect(mapDispatchToProps).toBeDefined();
-    // expect(mapDispatchToProps).toHaveReturned({ ...props });
+    expect(mapDispatchToProps.featureArticle()).toBeDefined();
+    expect(mapDispatchToProps.relateArticle()).toBeDefined();
+    expect(mapDispatchToProps.allArticle()).toBeDefined();
   });
 });

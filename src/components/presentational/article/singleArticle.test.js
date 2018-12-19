@@ -27,7 +27,6 @@ describe('display single article page', () => {
 
     expect(wrapper.find('.single-article-title').text()).toEqual('this is the title');
     expect(wrapper.find('.single-description').text()).toEqual('this is the description');
-    expect(wrapper.find('.is-featured-img').prop('src')).toEqual('xyz.jpg');
     expect(wrapper.find('.article-content').text()).toEqual('It is very clear to me');
     expect(wrapper.find('.article-like').text()).toEqual(' 5');
   });

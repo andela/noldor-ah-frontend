@@ -6,7 +6,6 @@ import Button from './button/Button';
 import FeaturedArticle from './home/FeaturedArticle';
 import RelatedArticle from './related-articles/RelatedArticles';
 import AllArticles from './home/AllArticles';
-import CategoryList from './category-list/CategoryList';
 import Banner from './home/Banner';
 
 export {
@@ -17,6 +16,5 @@ export {
   FeaturedArticle,
   RelatedArticle,
   AllArticles,
-  CategoryList,
   Banner
 };

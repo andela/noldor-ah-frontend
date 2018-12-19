@@ -1,55 +1,38 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`landing page should show page is loading 1`] = `<Loading />`;
-
-exports[`landing page should show page is loading 2`] = `
-<div>
-  <section
-    className="feat-section"
-  >
-    <CategoryList />
-    <FeaturedArticle
-      article={Object {}}
-      read={[Function]}
-    />
-  </section>
-  <section
-    className="section"
-  >
-    <div
-      className="container is-mt3 "
-    >
-      <div
-        className="columns is-multiline "
-      />
-      <nav
-        aria-label="pagination"
-        className="pagination is-rounded"
-        role="navigation"
-      >
-        <Pagination
-          isVisible={1}
-          onClick={[Function]}
-        />
-      </nav>
-    </div>
-  </section>
-  <Banner />
-  <section
-    className="section related-article-head"
-  >
-    <h1
-      className="related-article-title has-text-weight-bold"
-    >
-      Top Articles
-    </h1>
-    <div
-      className="container "
-    >
-      <div
-        className="columns footer-article"
-      />
-    </div>
-  </section>
-</div>
+exports[`landing page should show page is loading 1`] = `
+<Connect(Home)
+  allArticle={[Function]}
+  allArticles={
+    Array [
+      Object {
+        "description": "description",
+        "readTime": "1",
+        "title": "title",
+      },
+    ]
+  }
+  featureArticle={[Function]}
+  featuredArticle={
+    Object {
+      "article": Object {},
+      "isLoading": false,
+    }
+  }
+  relateArticle={[Function]}
+  relatedArticle={
+    Object {
+      "articles": Array [
+        Object {
+          "description": "description",
+          "readTime": "1",
+          "title": "title",
+        },
+      ],
+      "isLoading": false,
+    }
+  }
+/>
 `;
+
+exports[`landing page snap shot 1`] = `<Loading />`;

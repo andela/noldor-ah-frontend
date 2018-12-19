@@ -8,17 +8,18 @@ import PropTypes from 'prop-types';
 
 // components
 import {
-  Banner, RelatedArticle, CategoryList, FeaturedArticle, AllArticles
+  Banner, RelatedArticle, FeaturedArticle, AllArticles
 } from '../../presentational';
+import CategoryList from '../../common/category-list/CategoryList';
 import Pagination from '../../presentational/home/Pagination';
 import { loadFeatureArticle } from '../../../redux/actions/feature-article/featureArticleAction';
 import { loadRelatedArticles } from '../../../redux/actions/related-articles/relatedArticlesAction';
 import { loadAllArticles } from '../../../redux/actions/all-article/allArticleAction';
 import Loading from '../../common/loader/Loader';
-import isLoggedIn from '../../../utilities/is-logged-in/isLoggedIn';
 
 // styles
 import '../styles/Home.scss';
+
 
 export class Home extends Component {
   constructor(props, context, page = 1) {
@@ -28,7 +29,6 @@ export class Home extends Component {
       page: 1
     };
     this.page = page;
-    this.displayBanner = this.displayBanner.bind(this);
   }
 
   componentDidMount = () => {
@@ -52,13 +52,6 @@ export class Home extends Component {
     history.push(`/${articleId}`);
   }
 
-  displayBanner() {
-    if (isLoggedIn()) {
-      return false;
-    }
-    return <Banner />;
-  }
-
   render() {
     const { featuredArticle, relatedArticle, allArticles } = this.props;
     if (featuredArticle.isLoading !== false && relatedArticle.isLoading !== false) {
@@ -80,7 +73,7 @@ export class Home extends Component {
             </nav>
           </div>
         </section>
-        {this.displayBanner()}
+        <Banner />
         <section className="section related-article-head">
           <h1 className="related-article-title has-text-weight-bold">Top Articles</h1>
           <div className="container ">

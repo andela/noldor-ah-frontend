@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`categories list should display snap shot 1`] = `
+<div
+  className="container is-mt1 is-pb1"
+>
+  <div
+    className="categories has-text-centered is-pt1"
+  >
+    <ul>
+      <li
+        className="categories-list is-capitalized"
+        key="0"
+      >
+        MUSIC
+      </li>
+      <li
+        className="is-paddingless"
+      >
+        <button
+          className=" categories-button theme-background"
+        >
+          MORE
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>
+`;

@@ -3,8 +3,9 @@
   }
   .bookmark-remove{
     cursor: pointer;
-    
-    border: none
+    text: black;
+    background: transparent;
+    border: none!important;
   }
   .bookmark-remove:hover{
     color: red;

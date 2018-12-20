@@ -1,9 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
-import store from '../../../redux/store/index';
-
-
 const profile = () => (
   <section className="profile-header">
     <div className="container profile-content is-pt3 is-pb2">
@@ -14,8 +10,8 @@ const profile = () => (
           </figure>
         </div>
         <div className="column is-8">
-          <p className="title profile-author-name">Hope Uwa</p>
-          <p className="is-size-6" >He is fun ging and all of thing that he can not untill he has done it with</p>
+          <p className="title profile-author-name">Coming Soon.....</p>
+          <p className="is-size-6" >.......................................................................</p>
         </div>
         <div className="column is-2">
           <button className="button">Edit Profile</button>
@@ -24,11 +20,11 @@ const profile = () => (
     </div>
     <div className="container profile-footer has-text-centered">
       <ul className="is-size-5 ul-profile">
-        <li><Link to="/profile/bookmark">Bookmark <sup>3</sup></Link></li>
-        <li><Link to="/profile/published">Published <sup>3</sup></Link></li>
-        <li><Link to="/profile/drafts">Drafts <sup>3</sup></Link></li>
-        <li>Followers<sup>3</sup></li>
-        <li>Followings<sup>3</sup></li>
+        <li><Link to="/profile/bookmark">Bookmark </Link></li>
+        <li><Link to="/profile/published">Published </Link></li>
+        <li><Link to="/profile/drafts">Drafts </Link></li>
+        <li>Followers</li>
+        <li>Followings</li>
       </ul>
     </div>
   </section>

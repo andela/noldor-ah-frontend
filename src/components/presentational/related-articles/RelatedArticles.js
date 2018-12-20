@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Parser from 'html-react-parser';
 
 const RelatedArticle = (props, key) => {
   const { article, read } = props;
@@ -17,7 +18,7 @@ const RelatedArticle = (props, key) => {
           <div className="content is-pt1 ">
             <p className="is-size-6">{article.title}</p>
             {article.content && <p className="is-size-7 has-text-weight-light">
-              {article.content.substring(0, 80)}</p>}
+            {Parser(`${props.article.content.substring(0, 100)}.....`)}</p>}
             <p onClick={() => read(article.slug)}
               className="title is-6 theme-color read-more ">Read More</p>
           </div>

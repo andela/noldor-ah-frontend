@@ -18,10 +18,10 @@ import Logout from '../components/container/logout/Logout';
 import Footer from '../components/common/footer/Footer';
 // eslint-disable-next-line import/no-named-as-default
 import SinglePage from '../components/container/single-article/SingleArticle';
-import Profile from '../components/presentational/profile/Profile';
 import CreateArticle from '../components/container/create-article/CreateArticle';
 import Search from '../components/container/search/Search';
 import { SocialMediaAuthPage } from '../components/container/socialMediaAuth/SocialMediaAuthPage';
+import { Profile } from '../components/container/profile/Profile';
 
 export const history = createHistory();
 

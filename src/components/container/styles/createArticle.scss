@@ -1,0 +1,266 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+@import url('https://use.fontawesome.com/releases/v5.6.1/css/all.css');
+* {
+  font-family: 'Montserrat', sans-serif;
+  transition: .3s ease;
+  font-size: 1rem;
+}
+
+html {
+  background-color: #fff;
+}
+
+.article-center {
+  margin: 5% auto;
+}
+
+.article-form input {
+  border-style: none;
+  width: 100%;
+  padding: .5em 0;
+  border-bottom: 2px solid #9D9D9D;
+}
+
+.article-form input {
+  border-bottom: 3px solid #EAEAEA;
+}
+
+.article-form input:focus, .article-form input:hover {
+  border-bottom: 2px ridge #E66869;
+  outline: none;
+}
+
+input[class="ReactTags__tagInputField"] {
+  width: 80%;
+  height: 20%;
+  border: 3px solid #F5F5F5;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  border-radius: 10px;
+  background: #F5F5F5;
+}
+
+input[class="ReactTags__tagInputField"]:hover, input[class="ReactTags__tagInputField"]:focus {
+  border: 2px ridge #E66869;
+  outline: none;
+}
+
+#tags-display {
+  text-align: center;
+  position: relative;
+  top: 20%;
+}
+
+#tags-text {
+  padding: 5px;
+  font-size: 14px;
+  text-align: center;
+  color: #000000;
+}
+
+div#upload {
+  text-align: center;
+  position: relative;
+  top: 30%;
+}
+
+#upload-text {
+  font-weight: 300;
+  font-size: 18px;
+}
+
+.font-awesome {
+  font-size: 36px;
+  margin: 0 auto;
+  color: #C4C4C4;
+  background-color: #EFEFEF;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.font-awesome:hover {
+cursor: pointer;
+}
+
+.left-partition {
+  width: 95%;
+  height: 100%;
+}
+
+textarea, #text-area{
+  resize: none;
+  width: 100%;
+  height: 40em;
+  border-radius: 4px;
+  border: 2px solid #E0E0E0;
+}
+
+textarea:hover, textarea:focus {
+  border: 2px ridge #E66869;
+  outline: none;
+}
+
+.right-partition {
+  background-color: #EFEFEF;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  height: 47.5em;
+}
+
+.card-display {
+  background-color: #FFFFFF;
+  border: 1px solid #BDBDBD;
+  box-sizing: border-box;
+  border-radius: 10px;
+  width: 100%;
+  height: 25%;
+  margin-bottom: 10px;
+}
+
+.tag-container {
+  background-color: #FFFFFF;
+  border: 1px solid #BDBDBD;
+  box-sizing: border-box;
+  border-radius: 10px;
+  min-height: 40%;
+  margin-bottom: 10px;
+  .tag-information {
+    padding-top:5px;
+  }
+  #tag-instruction {
+    padding-bottom: 3px;
+  }
+}
+
+
+.tag-input {
+  border: 0;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.5em;
+  margin: 0.5em;
+  padding: 0.5em;
+  width: 80%;
+  
+}
+
+.tag-input:focus {
+  outline: 0;
+}
+
+.selected-display{
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  line-height: 1.5;
+  position: relative;
+}
+
+.tag-items {
+  background: #E66869;
+  color: white;
+  padding: 0.2em 0.6em;
+  position: relative;
+  border-radius: 4px;
+  font-size: 0.8em;
+  height: 2.5em;
+  margin: 0.8em 0.5em 0.3em 1em;
+  text-transform: capitalize;
+}
+
+.tag-items:hover{
+  top: 3px;
+}
+
+.remove-tags {
+  color: grey;
+  margin-left: 0.4em;
+  cursor: pointer;
+}
+
+.suggestions-tag {
+  position: absolute;
+}
+ul {
+  background: white;
+  list-style-type: none;
+  width: 100%;
+  li {
+    font-size: 0.8em;
+    margin: 0;
+    padding: 0.3em 1em;
+  }
+  mark {
+    background: rgba(230, 104, 105, 0.2);
+    font-weight: 600;
+    text-decoration: underline;
+  
+  }
+}
+
+
+#category-display {
+  text-align: center;
+  position: relative;
+  top: 30%;
+  width: 95%;
+  select {
+    padding: 0.5em;
+    height: 2.5em;
+    width: 80%;
+    background: #F5F5F5;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1em;
+    appearance: button;
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    outline: none;
+  }
+}
+
+#category-display::before {
+  content: "\f368";
+  font-family: 'Font Awesome 5 Free';
+  position: absolute;
+  font-weight: 200;
+  top: 0;
+  right: 1.6em;
+  width: 2em;
+  height: 2.5em;
+  border: 1px solid black;
+  border-radius: 5px;
+  background: #F5F5F5;
+  text-align: center;
+  line-height: 2.5em;
+  color: black;
+  font-size: 1.0em;
+  pointer-events: none;
+}
+
+#category-text {
+  font-size: 18px;
+  color: #000000;
+  font-size: 14px;
+}
+
+
+select:hover, select:focus {
+  outline: none;
+  cursor: pointer;
+}
+
+button {
+  background-color: #E66869;
+  color: white;
+  border-style: none;
+  border-radius: 3px;
+  padding: 0.4em 4em;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+#editor {
+  div {
+    outline: none;
+  }
+}

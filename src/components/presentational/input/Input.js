@@ -7,11 +7,11 @@ const Input = (props) => {
     name, title, type,
     value, onChange, placeholder,
     className, required, pattern,
-    id,
+    id, parentClass,
   } = props;
 
   return (
-    <div className="form-group">
+    <div className={parentClass}>
       <label htmlFor={name} className="form-label">
         {title}
       </label>
@@ -38,6 +38,7 @@ Input.propTypes = {
   onChange: propTypes.func,
   placeholder: propTypes.string,
   className: propTypes.string,
+  parentClass: propTypes.string,
   id: propTypes.string,
   required: propTypes.bool,
   pattern: propTypes.string,
@@ -53,6 +54,7 @@ Input.defaultProps = {
   id: '',
   required: false,
   pattern: null,
+  parentClass: 'form-group'
 };
 
 export default Input;

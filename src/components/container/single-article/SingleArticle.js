@@ -9,7 +9,7 @@ import SingleArticle from '../../presentational/article/singleArticle';
 import { loadAnArticle } from '../../../redux/actions/single-article/singleArticleAction';
 import CategoryList from '../../common/category-list/CategoryList';
 import Loading from '../../common/loader/Loader';
-import './style.scss';
+import '../styles/SingleArticle.scss';
 
 
 export class SinglePage extends Component {

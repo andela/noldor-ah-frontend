@@ -17,8 +17,9 @@ import Header from '../components/common/header/Header';
 import Logout from '../components/container/logout/Logout';
 import Footer from '../components/common/footer/Footer';
 // eslint-disable-next-line import/no-named-as-default
-import SinglePage from '../components/container/article/SingleArticle';
+import SinglePage from '../components/container/single-article/SingleArticle';
 import Profile from '../components/presentational/profile/Profile';
+import CreateArticle from '../components/container/create-article/CreateArticle';
 
 const history = createHistory();
 
@@ -48,6 +49,7 @@ export class ConnectedRoutes extends Component {
             <Route path="/profile" component={Profile} />
             <PublicRoute path={ROUTE_PATH.user.signup} component={Signup} />
             <Route path={ROUTE_PATH.user.verify} component={EmailVerified}/>
+            <Route exact path={ROUTE_PATH.article.post} component={CreateArticle} />
             <Route path={ROUTE_PATH.article.single} component={SinglePage} />
 
             <Route component={NotFound} />

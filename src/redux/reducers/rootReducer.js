@@ -8,6 +8,7 @@ import allArticleReducer from './all-article/allArticleReducer';
 import anArticle from './single-article/singleArticleReducer';
 import categoriesListReducer from './categories-list/categoriesList';
 import addBookmarkReducer from './bookmarks/addBookmarkReducer';
+import createArticle from './create-article/createArticle';
 
 
 export default combineReducers({
@@ -19,5 +20,6 @@ export default combineReducers({
   allArticleReducer,
   anArticle,
   categoriesListReducer,
-  addBookmarkReducer
+  addBookmarkReducer,
+  createArticle,
 });

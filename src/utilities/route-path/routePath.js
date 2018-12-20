@@ -16,7 +16,9 @@ const ROUTE_PATH = {
   article: {
     single: '/:slug',
     all: '/articles',
-    post: '/articles',
+    post: '/new-article',
+    update: '/articles/:slug',
+    delete: '/articles/:slug',
   }
 };
 

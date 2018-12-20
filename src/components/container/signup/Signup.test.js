@@ -89,5 +89,6 @@ describe('<Signup />', () => {
     const form = wrapper.find('form');
     form.simulate('submit');
     expect(mockSignupFn.mock.calls.length).toBe(1);
+    wrapper.unmount();
   });
 });

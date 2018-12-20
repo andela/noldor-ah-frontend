@@ -20,6 +20,7 @@ import Footer from '../components/common/footer/Footer';
 import SinglePage from '../components/container/single-article/SingleArticle';
 import Profile from '../components/presentational/profile/Profile';
 import CreateArticle from '../components/container/create-article/CreateArticle';
+import Search from '../components/container/search/Search';
 
 const history = createHistory();
 
@@ -50,6 +51,7 @@ export class ConnectedRoutes extends Component {
             <PublicRoute path={ROUTE_PATH.user.signup} component={Signup} />
             <Route path={ROUTE_PATH.user.verify} component={EmailVerified}/>
             <Route exact path={ROUTE_PATH.article.post} component={CreateArticle} />
+            <Route path="/search" component={Search} />
             <Route path={ROUTE_PATH.article.single} component={SinglePage} />
 
             <Route component={NotFound} />

@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import propTypes from 'prop-types';
+import store from '../../../redux/store/index';
+import { setKeyword } from '../../../redux/actions/search/searchAction';
 import { isLoggedIn } from '../../../utilities/index';
 import '../styles/header.scss';
 
@@ -94,6 +96,17 @@ class Header extends React.Component {
     );
   }
 
+  searchInput = async (event) => {
+    const request = {
+      keywords: this.navSearch.current.value,
+    };
+
+    if (event.key === 'Enter') {
+      await store.dispatch(setKeyword(request));
+      this.props.history.push('search');
+    }
+  }
+
   render() {
     return (
       <nav className="nav" role="navigation" aria-label="main navigation">
@@ -103,6 +116,7 @@ class Header extends React.Component {
               className="nav-search"
               type="text"
               ref={this.navSearch}
+              onKeyPress={this.searchInput}
               placeholder="&#x1F50D;"
             />
           </div>

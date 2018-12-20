@@ -47,7 +47,7 @@ export class ConnectedLogin extends Component {
         status: this.props.notification.type,
       });
       if (response === LOGIN_SUCCESS) {
-        return setTimeout(() => history.push('profile', { prev: 'login' }), 500);
+        return setTimeout(() => history.push('/', { prev: 'login' }), 500);
       }
     } catch (error) {
       /* do nothing */

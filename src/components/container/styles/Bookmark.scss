@@ -1,0 +1,18 @@
+.article-bookmark{
+    border-bottom: solid 2px #f5f5f5
+  }
+  .bookmark-remove{
+    cursor: pointer;
+    text: black;
+    background: transparent;
+    border: none!important;
+  }
+  .bookmark-remove:hover{
+    color: red;
+  }
+  .bookmark-footer{
+    color: #999999;
+  }
+  .bookmark-title{
+      cursor:pointer;
+  }

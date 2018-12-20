@@ -18,9 +18,9 @@ import Logout from '../components/container/logout/Logout';
 import Footer from '../components/common/footer/Footer';
 // eslint-disable-next-line import/no-named-as-default
 import SinglePage from '../components/container/single-article/SingleArticle';
-import Profile from '../components/presentational/profile/Profile';
 import CreateArticle from '../components/container/create-article/CreateArticle';
 import Search from '../components/container/search/Search';
+import Profile from '../components/container/profile/Profile';
 
 const history = createHistory();
 

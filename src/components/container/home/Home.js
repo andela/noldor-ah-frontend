@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 
 
 // components
+import { ToastContainer, notifier } from '../../../utilities/toast/notifier';
 import {
   Banner, RelatedArticle, FeaturedArticle, AllArticles
 } from '../../presentational';
@@ -16,9 +17,12 @@ import { loadFeatureArticle } from '../../../redux/actions/feature-article/featu
 import { loadRelatedArticles } from '../../../redux/actions/related-articles/relatedArticlesAction';
 import { loadAllArticles } from '../../../redux/actions/all-article/allArticleAction';
 import Loading from '../../common/loader/Loader';
+import isLoggedIn from '../../../utilities/is-logged-in/isLoggedIn';
+import 'react-toastify/dist/ReactToastify.css';
 
 // styles
 import '../styles/Home.scss';
+import { addBookmark } from '../../../redux/actions/bookmark/addBookmark';
 
 
 export class Home extends Component {
@@ -52,39 +56,54 @@ export class Home extends Component {
     history.push(`/${articleId}`);
   }
 
-  render() {
-    const { featuredArticle, relatedArticle, allArticles } = this.props;
-    if (featuredArticle.isLoading !== false && relatedArticle.isLoading !== false) {
-      return <Loading />;
-    }
-    return (
-      <div>
-        <section className="feat-section">
-          <CategoryList />
-          <FeaturedArticle article = {featuredArticle.article} read={this.viewArticle}/>
-        </section>
-        <section className="section">
-          <div className="container is-mt3 ">
-            <div className="columns is-multiline ">
-              {allArticles.map((article, index) => <AllArticles key={index} article={article} read={this.viewArticle} />)}
-            </div>
-            <nav className="pagination is-rounded" role="navigation" aria-label="pagination" >
-              <Pagination onClick={this.handleClick} isVisible={this.state.page} />
-            </nav>
-          </div>
-        </section>
-        <Banner />
-        <section className="section related-article-head">
-          <h1 className="related-article-title has-text-weight-bold">Top Articles</h1>
-          <div className="container ">
-            <div className="columns footer-article">
-              {relatedArticle.articles.map((x, index) => <RelatedArticle key={index} article={x} read={this.viewArticle} />)}
-            </div>
-          </div>
-        </section>
-      </div>
-    );
-  }
+   bookmarkArticle = async (slug) => {
+     await this.props.bookmark(slug);
+     const message = this.props.bookmarkMessage;
+     if (message) notifier(message, 'success');
+   }
+
+   displayBanner() {
+     if (isLoggedIn()) {
+       return false;
+     }
+     return <Banner />;
+   }
+
+   render() {
+     const { featuredArticle, relatedArticle, allArticles } = this.props;
+     if (featuredArticle.isLoading !== false && relatedArticle.isLoading !== false) {
+       return <Loading />;
+     }
+     return (
+       <div>
+         <ToastContainer/>
+         <section className="feat-section">
+           <CategoryList />
+           <FeaturedArticle article = {featuredArticle.article} read={this.viewArticle}/>
+         </section>
+         <section className="section">
+           <div className="container is-mt3 ">
+             <div className="columns is-multiline ">
+               {allArticles.map((article, index) => <AllArticles key={index} article={article} read={this.viewArticle} bookmark={this.bookmarkArticle} />)}
+             </div>
+             <nav className="pagination is-rounded" role="navigation" aria-label="pagination" >
+
+               <Pagination onClick={this.handleClick} isVisible={this.state.page} />
+             </nav>
+           </div>
+         </section>
+         {this.displayBanner()}
+         <section className="section related-article-head">
+           <h1 className="related-article-title has-text-weight-bold">Top Articles</h1>
+           <div className="container ">
+             <div className="columns footer-article">
+               {relatedArticle.articles.map((x, index) => <RelatedArticle key={index} article={x} read={this.viewArticle} />)}
+             </div>
+           </div>
+         </section>
+       </div>
+     );
+   }
 }
 
 Home.propTypes = {
@@ -94,20 +113,24 @@ Home.propTypes = {
   relatedArticle: PropTypes.object.isRequired,
   allArticle: PropTypes.func.isRequired,
   allArticles: PropTypes.array.isRequired,
-  history: PropTypes.object
+  history: PropTypes.object,
+  bookmark: PropTypes.func,
+  bookmarkMessage: PropTypes.string
 };
 
 export const mapStateToProps = (state) => {
   return {
     featuredArticle: state.featureArticleReducer,
     relatedArticle: state.relatedArticleReducer,
-    allArticles: state.allArticleReducer
+    allArticles: state.allArticleReducer,
+    bookmarkMessage: state.addBookmarkReducer.message
   };
 };
 
 export const mapDispatchToProps = {
   featureArticle: () => loadFeatureArticle(),
   relateArticle: () => loadRelatedArticles(),
-  allArticle: page => loadAllArticles(page)
+  allArticle: page => loadAllArticles(page),
+  bookmark: slug => addBookmark(slug)
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

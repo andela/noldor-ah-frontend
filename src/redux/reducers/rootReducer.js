@@ -9,6 +9,7 @@ import anArticle from './single-article/singleArticleReducer';
 import categoriesListReducer from './categories-list/categoriesList';
 import addBookmarkReducer from './bookmarks/addBookmarkReducer';
 import createArticle from './create-article/createArticle';
+import searchReducer from './search/searchReducer';
 
 
 export default combineReducers({
@@ -22,4 +23,5 @@ export default combineReducers({
   categoriesListReducer,
   addBookmarkReducer,
   createArticle,
+  search: searchReducer,
 });

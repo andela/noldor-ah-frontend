@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Notification, ModalNotification } from '../../presentational/index';
+import { Link } from 'react-router-dom';
+import { Notification, ModalNotification, SocialButton } from '../../presentational/index';
+import { setProvider } from '../../../redux/actions/social-media-auth/socialMediaAuthAction';
 import { signupRequest } from '../../../redux/actions/signup/signupAction';
 import '../styles/Signup.scss';
 
@@ -20,6 +22,19 @@ export class ConnectedSignup extends Component {
       successMessage: '',
       display: 'none',
     };
+    this.handleSocialButton = this.handleSocialButton.bind(this);
+  }
+
+  handleSocialButton(e) {
+    switch (e.target.className) {
+    case 'social-gl-btn loginBtn':
+      setProvider('google');
+      localStorage.setItem('button-type', 'google');
+      break;
+    default:
+      setProvider('facebook');
+      localStorage.setItem('button-type', 'facebook');
+    }
   }
 
   handleSubmit = async (event) => {
@@ -108,7 +123,38 @@ export class ConnectedSignup extends Component {
               <button type="submit">Signup</button>
               <p className="signup-cta tiny-font">Already have an account
                 <a className="tiny-font" href="/login">Log in here</a></p>
+              <p
+                className="cta"
+              >Forgot password? <Link to="forgot-password">click here</Link></p>
             </form>
+            <p className="or"><span>OR</span></p>
+            <div className="columns">
+              <div className="column">
+                <div className=" column is-three-quarters-mobile
+                is-two-thirds-tablet is-half-desktop is-one-third-widescreen is-one-quarter-fullhd">
+                  <SocialButton
+                    className="social-fc-btn loginBtn"
+                    fonticon="fa-facebook-f"
+                    text="Signup With Facebook"
+                    onClick={this.handleSocialButton}
+                    href={'https://noldor-ah-backend-staging.herokuapp.com/api/v1/auth/facebook'}
+                  />
+                </div>
+              </div>
+              <div className="column">
+                <div className="column is-three-quarters-mobile
+                is-two-thirds-tablet is-half-desktop is-one-third-widescreen is-one-quarter-fullhd">
+                  <SocialButton
+                    className="social-gl-btn loginBtn"
+                    fonticon="fa-google-plus-g"
+                    onClick={this.handleSocialButton}
+                    text="Signup with Google"
+                    href={'https://noldor-ah-backend-staging.herokuapp.com/api/v1/auth/google'}
+                    // href={'http://localhost:3000/api/v1/auth/google'}
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

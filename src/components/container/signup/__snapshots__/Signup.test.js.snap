@@ -1,5 +1,308 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Signup /> matches the snapshoot 1`] = `<Connect(ConnectedSignup) />`;
-
-exports[`<Signup /> matches the snapshoot of signup Page 1`] = `<ConnectedSignup />`;
+exports[`<Signup /> matches the snapshoot 1`] = `
+<ConnectedSignup
+  handleSubmit={[MockFunction]}
+  signupUser={[Function]}
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+  storeSubscription={
+    Subscription {
+      "listeners": Object {
+        "clear": [Function],
+        "get": [Function],
+        "notify": [Function],
+        "subscribe": [Function],
+      },
+      "onStateChange": [Function],
+      "parentSub": undefined,
+      "store": Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      },
+      "unsubscribe": [Function],
+    }
+  }
+>
+  <div
+    className="grey-background is-pt5"
+  >
+    <div
+      className="container is-desktop signup-container"
+    >
+      <div
+        className="signup-left"
+      />
+      <div
+        className="signup-right"
+      >
+        <h2
+          className="signup-intro bold"
+        >
+          WELCOME
+        </h2>
+        <p
+          className="signup-intro desktop-view light"
+        >
+          Signup Below to Start Interacting With Awesome Content.
+        </p>
+        <p
+          className="signup-intro-mobile light"
+        >
+          Please signup below
+        </p>
+        <form
+          className="signup-form"
+          onSubmit={[Function]}
+        >
+          <ModalNotification
+            status=""
+            successMessage=""
+          >
+            <div
+              className="modal "
+            >
+              <div
+                className="modal-background"
+              />
+              <div
+                className="modal-content"
+              />
+              <div
+                className="modal-card"
+              >
+                <header
+                  className="modal-card-head"
+                >
+                  <p
+                    className="modal-card-title"
+                  >
+                    Signup was successful
+                  </p>
+                </header>
+                <section
+                  className="modal-card-body is-center"
+                />
+                <footer
+                  className="modal-card-foot"
+                >
+                  <a
+                    className="button is-success"
+                    href="/"
+                    id="ah-color"
+                  >
+                    Continue to Authors Haven
+                  </a>
+                </footer>
+              </div>
+              <button
+                aria-label="close"
+                className="modal-close is-large"
+              />
+            </div>
+          </ModalNotification>
+          <Notification
+            display="none"
+            message=""
+            status=""
+          >
+            <div
+              className="notification is-info"
+              style={
+                Object {
+                  "display": "none",
+                }
+              }
+            />
+          </Notification>
+          <div
+            className="form-group"
+          >
+            <label
+              className="form-label"
+              htmlFor="email"
+            >
+              E-mail
+            </label>
+            <input
+              id="email"
+              name="email"
+              onChange={[Function]}
+              placeholder="Enter your email address here"
+              required={true}
+              type="email"
+            />
+          </div>
+          <div
+            className="form-group"
+          >
+            <label
+              className="form-label"
+              htmlFor="username"
+            >
+               Username
+            </label>
+            <input
+              id="username"
+              name="username"
+              onChange={[Function]}
+              placeholder="Enter your preferred username here"
+              required={true}
+              type="text"
+            />
+          </div>
+          <div
+            className="form-group"
+          >
+            <label
+              className="form-label"
+              htmlFor="password"
+            >
+              Password
+            </label>
+            <input
+              id="password"
+              name="password"
+              onChange={[Function]}
+              placeholder="Enter a secure password here"
+              required={true}
+              type="password"
+            />
+          </div>
+          <div
+            className="form-group"
+          >
+            <label
+              className="form-label"
+              htmlFor="confirmPassword"
+            >
+              Confirm password
+            </label>
+            <input
+              id="confirmPassword"
+              name="confirmPassword"
+              onChange={[Function]}
+              placeholder="Ensure your password matches the one above"
+              required={true}
+              type="password"
+            />
+          </div>
+          <button
+            type="submit"
+          >
+            Signup
+          </button>
+          <p
+            className="signup-cta tiny-font"
+          >
+            Already have an account
+            <a
+              className="tiny-font"
+              href="/login"
+            >
+              Log in here
+            </a>
+          </p>
+          <p
+            className="cta"
+          >
+            Forgot password? 
+            <Link
+              replace={false}
+              to="forgot-password"
+            >
+              <a
+                href="/forgot-password"
+                onClick={[Function]}
+              >
+                click here
+              </a>
+            </Link>
+          </p>
+        </form>
+        <p
+          className="or"
+        >
+          <span>
+            OR
+          </span>
+        </p>
+        <div
+          className="columns"
+        >
+          <div
+            className="column"
+          >
+            <div
+              className=" column is-three-quarters-mobile is-two-thirds-tablet is-half-desktop is-one-third-widescreen is-one-quarter-fullhd"
+            >
+              <SocialButton
+                className="social-fc-btn loginBtn"
+                fonticon="fa-facebook-f"
+                href="https://noldor-ah-backend-staging.herokuapp.com/api/v1/auth/facebook"
+                onClick={[Function]}
+                text="Signup With Facebook"
+              >
+                <div
+                  onClick={[Function]}
+                >
+                  <a
+                    href="https://noldor-ah-backend-staging.herokuapp.com/api/v1/auth/facebook"
+                  >
+                    <button
+                      className="social-fc-btn loginBtn"
+                    >
+                      Signup With Facebook
+                    </button>
+                  </a>
+                </div>
+              </SocialButton>
+            </div>
+          </div>
+          <div
+            className="column"
+          >
+            <div
+              className="column is-three-quarters-mobile is-two-thirds-tablet is-half-desktop is-one-third-widescreen is-one-quarter-fullhd"
+            >
+              <SocialButton
+                className="social-gl-btn loginBtn"
+                fonticon="fa-google-plus-g"
+                href="https://noldor-ah-backend-staging.herokuapp.com/api/v1/auth/google"
+                onClick={[Function]}
+                text="Signup with Google"
+              >
+                <div
+                  onClick={[Function]}
+                >
+                  <a
+                    href="https://noldor-ah-backend-staging.herokuapp.com/api/v1/auth/google"
+                  >
+                    <button
+                      className="social-gl-btn loginBtn"
+                    >
+                      Signup with Google
+                    </button>
+                  </a>
+                </div>
+              </SocialButton>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ConnectedSignup>
+`;

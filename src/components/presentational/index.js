@@ -7,12 +7,14 @@ import FeaturedArticle from './home/FeaturedArticle';
 import RelatedArticle from './related-articles/RelatedArticles';
 import AllArticles from './home/AllArticles';
 import Banner from './home/Banner';
+import SocialButton from './socialMediaButton/SocialMediaButton';
 
 export {
   Input,
   Notification,
   ModalNotification,
   Button,
+  SocialButton,
   FeaturedArticle,
   RelatedArticle,
   AllArticles,

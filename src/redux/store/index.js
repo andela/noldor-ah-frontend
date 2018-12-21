@@ -4,7 +4,10 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from '../reducers/rootReducer';
 
-const middleware = [thunk];
+const middleware = process.env.NODE_ENV !== 'production'
+  ? [require('redux-immutable-state-invariant').default(), thunk]
+  : [thunk];
+// const middleware = [thunk];
 
 // if (process.env.NODE_ENV !== 'production') {
 //   const { createLogger } = require('redux-logger');

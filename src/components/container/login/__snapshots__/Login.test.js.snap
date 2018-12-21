@@ -87,6 +87,47 @@ exports[`<Login /> shallow rendering tests matches the snapshot 1`] = `
         click here
       </Link>
     </p>
+    <p
+      className="or"
+    >
+      <span>
+        OR
+      </span>
+    </p>
+    <div
+      className="columns"
+    >
+      <div
+        className="column"
+      >
+        <div
+          className=" column is-three-quarters-mobile is-two-thirds-tablet is-half-desktop is-one-third-widescreen is-one-quarter-fullhd"
+        >
+          <SocialButton
+            className="social-fc-btn loginBtn"
+            fonticon="fa-facebook-f"
+            href="https://noldor-ah-backend-staging.herokuapp.com/api/v1/auth/facebook"
+            onClick={[Function]}
+            text="Login With Facebook"
+          />
+        </div>
+      </div>
+      <div
+        className="column"
+      >
+        <div
+          className="column is-three-quarters-mobile is-two-thirds-tablet is-half-desktop is-one-third-widescreen is-one-quarter-fullhd"
+        >
+          <SocialButton
+            className="social-gl-btn loginBtn"
+            fonticon="fa-google-plus-g"
+            href="https://noldor-ah-backend-staging.herokuapp.com/api/v1/auth/google"
+            onClick={[Function]}
+            text="Login with Google"
+          />
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;

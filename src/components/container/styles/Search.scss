@@ -68,7 +68,6 @@ $box-shadow-inset: inset 0 0 5px rgba(57,73,76,0.35);
       margin: 2em 1em;
       padding: 1em;
       border-radius: 5px;
-      min-height: 40%;
       background-color: white;
       box-shadow: $box-shadow-inset;
 
@@ -102,6 +101,16 @@ $box-shadow-inset: inset 0 0 5px rgba(57,73,76,0.35);
         width: 100%;
         font-size: .9em;
         color: #E66869;
+      }
+
+      .remove-author-filter {
+        padding: .4em;
+        margin: .4em auto;
+        cursor: pointer;
+        outline: 0;
+        &:hover {
+          opacity: .7;
+        }
       }
     }
   }

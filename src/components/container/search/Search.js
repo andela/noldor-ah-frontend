@@ -170,6 +170,15 @@ export class ConnectedSearch extends Component {
     }
   }
 
+  clearAuthorFilter = async () => {
+    this.authorSelect.current.selectedIndex = 0;
+    await this.setState({
+      authorFilter: ''
+    });
+
+    this.search(this.state.categoryFilter, this.state.authorFilter);
+  }
+
   render() {
     const { categories, authors } = this.state;
     const { sidebar } = this;
@@ -213,7 +222,6 @@ export class ConnectedSearch extends Component {
 
             <div className="sidebar-authors">
               <h3 className="sidebar-h3">Refine by author</h3>
-              <p className="sidebar-p">To clear this filter, choose "Select Author:"</p>
               <select
                 ref={this.authorSelect}
                 className="sidebar-select"
@@ -222,6 +230,12 @@ export class ConnectedSearch extends Component {
                 <option key="select-auth" className="select-author" value="">Select Author:</option>
                 {authors}
               </select>
+              <button
+                className="remove-author-filter"
+                onClick={this.clearAuthorFilter}
+              >
+                Remove this filter
+              </button>
             </div>
           </div>
 

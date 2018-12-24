@@ -1,11 +1,11 @@
 /**
- * @param {number} pageInput
+ * @param {number} pageNoInput
  * @returns {Array} pages
  */
-function createPaginationArray(pageInput) {
+function createPaginationArray(pageNoInput) {
   const dispLayWidth = parseInt(localStorage.getItem('message'), 10);
   const width = dispLayWidth < 5 ? dispLayWidth : 5;
-  const startPage = pageInput,
+  const startPage = pageNoInput,
     range = width,
     totalPages = parseInt(localStorage.getItem('message'), 10);
   let start = 1;

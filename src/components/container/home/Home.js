@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import React, { Component } from 'react';
 
 // third-party libraries
@@ -8,10 +9,9 @@ import PropTypes from 'prop-types';
 // components
 import { ToastContainer, notifier } from '../../../utilities/toast/notifier';
 import {
-  Banner, RelatedArticle, FeaturedArticle, AllArticles
+  Banner, RelatedArticle, FeaturedArticle, AllArticles, Pagination
 } from '../../presentational';
 import CategoryList from '../../common/category-list/CategoryList';
-import Pagination from '../../presentational/home/Pagination/Pagination';
 import { loadFeatureArticle } from '../../../redux/actions/feature-article/featureArticleAction';
 import { loadRelatedArticles } from '../../../redux/actions/related-articles/relatedArticlesAction';
 import { loadAllArticles } from '../../../redux/actions/all-article/allArticleAction';
@@ -54,11 +54,17 @@ export class Home extends Component {
     }
     const pageList = this.paginationList.current.children;
     [...pageList].map(page => page.classList.remove('is-current'));
-    e.target.classList.add('is-current');
     this.setState({ allArticles: this.props.allArticle(pageNo) });
     this.page = pageNo;
     this.setState({ ...this.state, page: pageNo });
     this.scrollToPageRef();
+    setTimeout(() => {
+      [...pageList].map((page) => {
+        if (page.innerHTML.split('')[1] === '.') {
+          page.classList.add('is-current');
+        }
+      });
+    }, 500);
   }
 
   viewArticle = (articleId) => {
@@ -97,11 +103,17 @@ export class Home extends Component {
     } else {
       pageNo = parseInt(localStorage.getItem('message'), 10);
     }
-    e.target.classList.add('is-current');
     this.setState({ allArticles: this.props.allArticle(pageNo) });
     this.page = pageNo;
     this.setState({ ...this.state, page: pageNo });
     this.scrollToPageRef();
+    setTimeout(() => {
+      [...pageList].map((page) => {
+        if (page.innerHTML.split('')[1] === '.') {
+          page.classList.add('is-current');
+        }
+      });
+    }, 500);
   }
 
   render() {
@@ -109,6 +121,14 @@ export class Home extends Component {
     if (featuredArticle.isLoading !== false && relatedArticle.isLoading !== false) {
       return <Loading />;
     }
+    setTimeout(() => {
+      const pageList = this.paginationList.current.children;
+      [...pageList].map((page) => {
+        if (page.innerHTML.split('')[1] === '.') {
+          page.classList.add('is-current');
+        }
+      });
+    }, 2000);
     return (
       <div>
         <ToastContainer />

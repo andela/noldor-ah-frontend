@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import '../style.scss';
-import pagination from './paginator';
+import Paginator from './Paginator/Paginator';
 
 const Pagination = (props) => {
   const nextPage = '>';
@@ -10,7 +10,7 @@ const Pagination = (props) => {
     onClick, extremePages, isVisible, reference
   } = props;
   const startPage = isVisible;
-  const arr = pagination(startPage);
+  const arr = Paginator(startPage);
   const el = [];
   const prev = isVisible === 1
     ? (<a className="button pagination-previous is-static" onClick={onClick}>{previousPage}</a>)

@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Paginator from './paginator';
+import Paginator from './Paginator';
 
 describe('Paginator Test', () => {
   it('should exist', () => {

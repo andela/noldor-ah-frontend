@@ -2,7 +2,6 @@ $box-shadow-outset: 0 2px 6px rgba(57,73,76,.35);
 
 .card {
   margin: 0 .5em 1em 0;
-  min-height: 550px;
   border-radius: 5px;
   &:hover, &:focus {
     transition: .3s ease;

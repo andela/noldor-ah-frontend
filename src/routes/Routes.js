@@ -54,6 +54,8 @@ export class ConnectedRoutes extends Component {
             <Route path={ROUTE_PATH.user.verify} component={EmailVerified}/>
             <Route exact path={ROUTE_PATH.article.post} component={CreateArticle} />
             <Route path="/search" component={Search} />
+            <Route path={ROUTE_PATH.user.signup} component={Signup} />
+            <Route path={ROUTE_PATH.user.verify} component={EmailVerified}/>
             <Route path={ROUTE_PATH.article.single} component={SinglePage} />
             <Route component={NotFound} />
           </Switch>

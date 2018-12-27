@@ -4,7 +4,7 @@ import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import Pagination from './Pagination';
-import AllArticles from './AllArticles';
+import AllArticles from '../AllArticles';
 
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
@@ -23,6 +23,14 @@ describe('Pagination Test', () => {
       <Pagination />
     </Provider>);
     wrapper.find('.pagination-previous').simulate('click');
+  });
+  it('should simulate a previous click event', () => {
+    const initialState = {};
+    const store = mockStore(initialState);
+    const wrapper = mount(<Provider store={store}>
+      <Pagination />
+    </Provider>);
+    wrapper.find('.pagination-next').simulate('click');
   });
   it('should return title props', () => {
     const props = {

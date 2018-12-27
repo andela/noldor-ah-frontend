@@ -26,6 +26,7 @@ export const loginRequest = (user) => {
 
     return Axios.post('https://noldor-ah-backend-staging.herokuapp.com/api/v1/users/login', user)
       .then((response) => {
+        localStorage.setItem('token', response.data.token);
         dispatch(notifySuccess(response.data.message));
         dispatch(loginSuccess(response.data));
         return LOGIN_SUCCESS;

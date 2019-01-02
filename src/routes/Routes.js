@@ -21,7 +21,7 @@ import SinglePage from '../components/container/single-article/SingleArticle';
 import Profile from '../components/presentational/profile/Profile';
 import CreateArticle from '../components/container/create-article/CreateArticle';
 import Search from '../components/container/search/Search';
-import SocialMediaAuthPage from '../components/container/socialMediaAuth/SocialMediaAuthPage';
+import { SocialMediaAuthPage } from '../components/container/socialMediaAuth/SocialMediaAuthPage';
 
 export const history = createHistory();
 

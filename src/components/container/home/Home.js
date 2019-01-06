@@ -94,28 +94,6 @@ export class Home extends Component {
     });
   }
 
-  extremePages = (e) => {
-    let pageNo = this.state.page;
-    const pageList = this.paginationList.current.children;
-    [...pageList].map(page => page.classList.remove('is-current'));
-    if (e.target.className === 'pagination-link first') {
-      pageNo = 1;
-    } else {
-      pageNo = parseInt(localStorage.getItem('message'), 10);
-    }
-    this.setState({ allArticles: this.props.allArticle(pageNo) });
-    this.page = pageNo;
-    this.setState({ ...this.state, page: pageNo });
-    this.scrollToPageRef();
-    setTimeout(() => {
-      [...pageList].map((page) => {
-        if (page.innerHTML.split('')[1] === '.') {
-          page.classList.add('is-current');
-        }
-      });
-    }, 500);
-  }
-
   render() {
     const { featuredArticle, relatedArticle, allArticles } = this.props;
     if (featuredArticle.isLoading !== false && relatedArticle.isLoading !== false) {
@@ -151,7 +129,6 @@ export class Home extends Component {
               <Pagination
                 onClick={this.handleClick}
                 isVisible={this.state.page}
-                extremePages={this.extremePages}
                 reference={this.paginationList}
               />
             </nav>

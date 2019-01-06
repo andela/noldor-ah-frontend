@@ -1,0 +1,22 @@
+.empty, .full {
+  width: 1.0rem;
+  height: 1.0rem;
+}
+
+.article-rating {
+  display: inline-block;
+}
+
+.display-effect {
+  visibility: visible 
+}
+.display-effect:hover {
+  visibility: visible 
+}
+
+.rate-article:hover + .display-effect {
+  cursor: pointer;
+  color: #333;
+  visibility: visible;
+  transition: 0.5s ease-in-out
+}

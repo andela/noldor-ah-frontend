@@ -11,6 +11,8 @@ import addBookmarkReducer from './bookmarks/addBookmarkReducer';
 import createArticle from './create-article/createArticle';
 import searchReducer from './search/searchReducer';
 import socialMediaUserReducer from './socialMedia/socialMediaAuthReducer';
+import articleRating from './article-rating/articleRating';
+import userRatings from './article-rating/userArticleRating';
 
 
 export default combineReducers({
@@ -26,4 +28,6 @@ export default combineReducers({
   addBookmarkReducer,
   createArticle,
   search: searchReducer,
+  articleRating,
+  userRatings
 });

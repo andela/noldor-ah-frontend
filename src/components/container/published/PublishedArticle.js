@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../presentational/profile/profile.scss';
+import '../profileContainer/profile.scss';
 
 const PublishedArticle = () => (<div className="profile-container">
   <p className="coming-soon">Coming Soon</p>

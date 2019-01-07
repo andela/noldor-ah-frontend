@@ -12,6 +12,7 @@ import createArticle from './create-article/createArticle';
 import searchReducer from './search/searchReducer';
 import socialMediaUserReducer from './socialMedia/socialMediaAuthReducer';
 import viewBookmarkReducer from './view-bookmark/viewBookmarkReducer';
+import profileReducer from './profile/profileReducer';
 
 
 export default combineReducers({
@@ -27,5 +28,6 @@ export default combineReducers({
   addBookmarkReducer,
   createArticle,
   search: searchReducer,
-  viewBookmarkReducer
+  viewBookmarkReducer,
+  profileReducer
 });

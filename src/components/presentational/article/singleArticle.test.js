@@ -26,8 +26,17 @@ describe('display single article page', () => {
     const wrapper = setup();
 
     expect(wrapper.find('.single-article-title').text()).toEqual('this is the title');
-    expect(wrapper.find('.single-description').text()).toEqual('this is the description');
+    expect(wrapper.find('.single-description').text())
+      .toEqual('this is the description<RatingAPILayer />');
     expect(wrapper.find('.article-content').text()).toEqual('It is very clear to me');
     expect(wrapper.find('.article-like').text()).toEqual(' 5');
+  });
+  it('should render article rating component', () => {
+    const wrapper = setup();
+    expect(wrapper.find('.article-rating').exists()).toBe(true);
+  });
+  it('should render article rating component', () => {
+    const wrapper = setup();
+    expect(wrapper.find('.login').simulate('click'));
   });
 });

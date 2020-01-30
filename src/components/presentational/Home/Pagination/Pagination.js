@@ -7,7 +7,7 @@ const Pagination = (props) => {
   const nextPage = '>';
   const previousPage = '<';
   const {
-    onClick, extremePages, isVisible, reference
+    onClick, isVisible, reference
   } = props;
   const startPage = isVisible;
   const arr = Paginator(startPage);
@@ -19,11 +19,6 @@ const Pagination = (props) => {
     ? <a className="button pagination-previous is-static" onClick={onClick}>{nextPage}</a>
     : (<a className="pagination-next" onClick={onClick}>{nextPage}</a>);
 
-  const last = '>>';
-  const first = '<<';
-  const lastPage = <a className="pagination-link last" onClick={extremePages}>{last}</a>;
-  const firstPage = <a className="pagination-link first" onClick={extremePages}>{first}</a>;
-
   for (let i = 0; i < arr.length; i += 1) {
     el.push(<a className="pagination-link" onClick={onClick} key={i} value={arr[i]}>{arr[i]}</a>);
   }
@@ -33,11 +28,9 @@ const Pagination = (props) => {
         {localStorage.getItem('pageInfo')}&nbsp;&nbsp;
       </span>
       <li ref={reference} >
-        {firstPage}
         {prev}
         {el}
         {next}
-        {lastPage}
       </li>
     </ul>
   </nav>);

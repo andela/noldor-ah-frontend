@@ -2,7 +2,6 @@ import React from 'react';
 
 import { shallow } from 'enzyme';
 import { SinglePage, mapDispatchToProps, mapStateToProps } from './SingleArticle';
-// import { loadAnArticle } from '../../../actions/singlearticle/singleArticleAction';
 
 describe('landing page', () => {
   const getProps = isLoading => (
@@ -60,14 +59,6 @@ describe('landing page', () => {
     expect(mapStateToProps(state, ownProp)).toBeDefined();
   });
   it('define mapDispatchToProps', () => {
-    // const wrapper = shallow(<Connect  />)
-    // console.log(wrapper.debug())
-    // const props = {
-    //   singleArticle: () => loadAnArticle(),
-
-    // };
-
     expect(mapDispatchToProps).toBeDefined();
-    // expect(mapDispatchToProps).toHaveReturned({ ...props });
   });
 });

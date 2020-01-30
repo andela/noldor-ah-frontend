@@ -1,6 +1,11 @@
-    @media screen and (min-width: 769px){
+@media screen and (min-width: 769px) {
     .pagination-list {
         justify-content: flex-end!important;
     }
-  }
+}
   
+.pagination-link.is-current {
+    background-color: #ff3860;
+    border-color: #ff3860;
+    color: #fff;
+}
